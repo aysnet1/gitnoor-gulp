@@ -1,0 +1,135 @@
+---
+layout: ico
+title: Home
+---
+
+<!-- Landing page Hero -->
+<section class="hero is-fullheight has-big-dark-gradient">
+    <div class="hero-head">
+
+        <!-- Cloned navbar -->
+        {{> navbar-clone}}
+
+        <!-- Static navbar -->
+        {{> navbar}}
+
+    </div>
+
+    <!-- Hero Image and Title -->
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+
+
+
+
+
+                <!-- Landing page Title -->
+                <div class="column is-6 landing-caption">
+                  <h2 class="title is-light is-semibold has-text-centered is-spaced">  Votre Avis nous intéresse</h2>
+                  <h4 class="subtitle is-6 is-light has-text-centered is-compact"> N'hésitez pas à nous contacter en remplissant le formulaire ci-dessous ou via nos coordonnées en haute de page.</h4>
+
+                  <!-- Content wrapper -->
+                  <div class="content-wrapper is-large">
+                      <div class="columns">
+                          <div class="column is-8 is-offset-2">
+                              <!-- Contact icons -->
+                              <div class="contact-icons">
+                                  <!-- Phone -->
+                                  <a href="tel:+21629652077" class="contact-icon" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                      <img class="is-phone" src="assets/images/icons/phone.svg" alt="">
+                                  </a>
+                                  <!-- Mail -->
+                                  <a href="mailto:aysser21@gmail.com" class="contact-icon" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                      <img class="is-phone" src="assets/images/icons/mail.svg" alt="">
+                                  </a>
+                                  <!-- Telegram -->
+                                  <a href="#" class="contact-icon" data-aos="fade-up" data-aos-delay="500" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                      <img class="is-telegram" src="assets/images/logo/telegram.svg" alt="">
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="columns">
+                          <div class="column is-6 is-offset-3">
+                              <!-- Form -->
+                              <form method="post" action="sent.php" class="contact-form">
+                                  <!-- Field -->
+                                  <div class="control-material is-secondary">
+                                      <input name="Name" class="material-input " type="text" required>
+                                      <span class="material-highlight"></span>
+                                      <span class="bar"></span>
+                                      <label>Name</label>
+                                  </div>
+                                  <!-- Field -->
+                                  <div class="control-material is-secondary">
+                                      <input name="Email" class="material-input " type="email" required>
+                                      <span class="material-highlight"></span>
+                                      <span class="bar"></span>
+                                      <label>Email</label>
+                                  </div>
+                                  <!-- Field -->
+                                  <div class="control-material is-secondary">
+                                      <textarea name="message" rows="3"></textarea>
+                                      <span class="material-highlight"></span>
+                                      <span class="bar"></span>
+                                      <label>Message </label>
+                                  </div>
+
+                                  <!-- Submit -->
+                                  <div class="has-text-centered">
+                                      <button class="button is-button k-button k-primary raised has-gradient is-fat is-bold is-submit">
+                                          <span class="text">envoyer message</span>
+                                          <span class="front-gradient"></span>
+                                      </button>
+                                  </div>
+                              </form>
+                              <!-- /Form -->
+                          </div>
+                      </div>
+
+
+                  </div>
+
+                </div>
+                <!-- Hero image -->
+                <div class="column is-6 ico-countdown">
+                    <div  class="ico-card animated preFadeInUp fadeInUp">
+
+
+                        <!-- Button -->
+                        <div class="button-block">
+                            <a href="Index.html" class="button k-button k-secondary raised has-gradient is-bold is-fullwidth rounded">
+                                <span class="text">Back to Home</span>
+                                <span class="front-gradient"></span>
+                            </a>
+                        </div>
+
+                        <!-- Icons -->
+                        <div class="icon-block">
+                            <i class="cf cf-btc"></i>
+                            <i class="cf cf-eth"></i>
+                            <i class="cf cf-ltc"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero footer -->
+    <div class="hero-foot">
+        <div class="container">
+            <div class="tabs is-centered">
+                <!-- Client / partner list -->
+                <ul>
+                    <li><a>Clubfr</a></li>
+                    <li><a>Gitnoor</a></li>
+                    <li><a>Kairouan</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Landing page Hero -->
