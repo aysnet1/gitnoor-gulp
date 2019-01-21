@@ -1,5 +1,5 @@
 {
-  "name": "Gitnoor Team",
+  "name": "gitnoor-gulp",
   "version": "0.0.1",
   "description": "Starter bundled with bulma.io",
   "main": "Gruntfile.js",
@@ -39,7 +39,6 @@
   "dependencies": {
     "aos": "^2.2.0",
     "bulma": "^0.6.2",
-   
     "feather-icons": "^4.7.0",
     "gulp-less": "^4.0.1",
     "jquery": "2.2.4",
