@@ -27,14 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cssninjaStudio/theme.git"
+    "url": "https://github.com/aysnet1/gitnoor-gulp.git"
   },
   "bugs": {
-    "url": "https://github.com/cssninjaStudio/theme/issues",
-    "email": "support@cssninja.io"
+    "url": "https://github.com/aysnet1/gitnoor-gulp/issues",
+    "email": ""
   },
-  "author": "Css Ninja <hello@cssninja.io> (https://cssninja.io)",
-  "license": "",
+  "author": "Gitnoor",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "aos": "^2.2.0",
@@ -45,7 +45,7 @@
     "jquery.easing": "^1.4.1",
     "modal-video": "^2.3.2",
     "particlesjs": "2.2.0",
-   
+
     "semantic-ui-sass": "^2.3.1"
   }
 }
