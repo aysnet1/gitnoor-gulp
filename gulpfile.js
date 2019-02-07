@@ -67,8 +67,8 @@ gulp.task('copy', function() {
     //Copy other external css assets
     gulp.src(['assets/css/*.css']).pipe(gulp.dest('_web/assets/css/'));
     //Copy other external font assets
-    gulp.src(['assets/fonts/*']).pipe(gulp.dest('_web/assets/fonts/'));
-    gulp.src(['css/**/**/*']).pipe(gulp.dest('_web/assets/css/'));
+    gulp.src(['semantic/**/**/*']).pipe(gulp.dest('_web/assets/fonts/'));
+    gulp.src(['css/*']).pipe(gulp.dest('_web/assets/css/'));
 });
 
 //Theme Sass variables
@@ -184,12 +184,6 @@ gulp.task('copy-js', function() {
         .pipe(gulp.dest('./_web/assets/js/'));
 });
 
-// Copy fonts
-gulp.task('copy-fonts', function() {
-    //Cryptofont
-    gulp.src([nodepath + 'cryptofont/css/**/*']).pipe(gulp.dest('_web/assets/fonts/cryptofont/css/'));
-    gulp.src([nodepath + 'cryptofont/fonts/**/*']).pipe(gulp.dest('_web/assets/fonts/cryptofont/fonts/'));
-});
 
 //Copy images to production site
 gulp.task('copy-images', function() {
@@ -198,5 +192,5 @@ gulp.task('copy-images', function() {
 });
 
 gulp.task('init', ['setupBulma']);
-gulp.task('build', ['clean','copy', 'copy-plugins', 'compile-js', 'copy-js', 'compile-sass','compile-scss', 'compile-html', 'copy-fonts', 'copy-images']);
+gulp.task('build', ['clean','copy', 'copy-plugins', 'compile-js', 'copy-js', 'compile-sass','compile-scss', 'compile-html', 'copy-images']);
 gulp.task('default', ['server', 'watch']);
