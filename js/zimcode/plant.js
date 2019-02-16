@@ -1,5 +1,5 @@
 
-var scaling = "fit"; // fit scales to fit the browser window while keeping the aspect ratio
+var scaling = "full"; // fit scales to fit the browser window while keeping the aspect ratio
 var width = 800; // can go higher...
 var height = 600;
 var color = dark;
