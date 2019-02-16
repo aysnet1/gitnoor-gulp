@@ -1,5 +1,5 @@
 
-var scaling = "full"; // fit scales to fit the browser window while keeping the aspect ratio
+var scaling = "fit"; // fit scales to fit the browser window while keeping the aspect ratio
 var width = 800; // can go higher...
 var height = 600;
 var color = dark;
@@ -164,16 +164,6 @@ frame.on("ready", function() {
 		activeController.speed = proportionSpeed.convert(butterfly.y);
 		field.x = proportionField.convert(butterfly.x);
 	});
-	frame.on("resize", resize);
-	function resize(e) {
-		stageW = frame.width;
-		stageH = frame.height;
-
-		// resize the layout
-		layout.resize();
-
-		stage.update();
-	}
-	resize(); // often want to call resize after page is made
+	
 
 }); // end of ready
