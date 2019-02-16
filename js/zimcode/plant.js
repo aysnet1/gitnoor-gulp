@@ -11,7 +11,7 @@ var height = 600;
 var color = dark;
 var outerColor = darker;
 var assets = ["butterfly.png", "field.png"];
-var path = "assets/js/zimcode/"
+var path = "assets/images/zimcode/"
 var frame = new Frame(scaling, width, height, color, outerColor, assets, path); // see docs for more options and info
 frame.on("ready", function() {
 	zog("ready from ZIM Frame");
