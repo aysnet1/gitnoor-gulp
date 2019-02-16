@@ -60,6 +60,7 @@ gulp.task('copy-plugins', function() {
     //Aos
     gulp.src([nodepath + 'aos/dist/**/*']).pipe(gulp.dest('_web/assets/js/aos/'));
 
+
 });
 
 // Copy assets
@@ -151,6 +152,7 @@ gulp.task('compile-html', function() {
     gulp.src('html/pages/**/*.html')
         .pipe(panini({
         root: 'html/pages/',
+        
         layouts: 'html/layouts/',
         partials: 'html/includes/',
         helpers: 'html/helpers/',

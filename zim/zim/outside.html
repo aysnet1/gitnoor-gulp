@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM Frame - Outside Template</title>
+
+<!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 				-->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
+<!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
+
+<script src="https://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+<script>
+	var zon = true; // set to false to turn off console messages from zim
+	var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
+</script>
+<script src="https://d309knd7es5f10.cloudfront.net/zim_9.5.1.js"></script><!-- add _doc to see code -->
+<!-- use zimjs.com/distill for minified individual functions! -->
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"		sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"		sets stage to window size with no scaling
+// "tagID"		add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+var scaling = "outside"; // outside keeps aspect ratio and scales stage to fit outside the browser window
+var width = 1024; // can go higher...
+var height = 768;
+var color = blue; // ZIM colors now available globally
+var outerColor = dark;
+
+var frame = new Frame(scaling, width, height, color, outerColor); // see docs for more options and info
+frame.on("ready", function() {
+	zog("ready from ZIM Frame");
+
+	var stage = frame.stage;
+	var stageW = frame.width;
+	var stageH = frame.height;
+
+	// put your code here (you can delete this code)
+
+	var button = new Button(140, 60, "ZIM").center(stage); // centers on stage - addTo() and others as well!
+	button.on("click", function() { // on() is like addEventListener()
+		zgo("http://zimjs.com/frame.html"); // or relative URL, target is available too
+	});
+
+	// WARNING - the stage will go off the screen in the outside mode
+	// resize the window and see what happens to this circle which is positioned at the top left of the stage
+	var radius = 50;
+	var warning = new Circle(radius, pink).pos(radius, radius, stage);
+
+	stage.update(); // update the stage to see any changes
+
+}); // end of ready
+</script>
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM Frame - Tag (Dimensionless) Template</title>
+
+<!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 				-->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
+<!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
+
+<script src="https://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+<script>
+	var zon = true; // set to false to turn off console messages from zim
+	var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
+</script>
+<script src="https://d309knd7es5f10.cloudfront.net/zim_9.5.1.js"></script><!-- add _doc to see code -->
+<!-- use zimjs.com/distill for minified individual functions! -->
+
+<style>
+	body {background-color:#ccc;}
+	article {font-size:14px; font-family:verdana; padding:20px;  margin:20px; color:#555; position:relative; width:60%; border:thin solid #888;}
+
+	/* the width and height must be controlled somehow if not provided to Frame
+	   here we set the height and the width is determined by the article tag
+	   the div inside the article tag is called holder and that is what we add the Frame to
+	   the frame then makes a canvas tag with an id of holderCanvas (always adds the word Canvas)
+	   NOTE: the stage will have its dimensions changed accordingly in a resize event
+	   but the canvas itself is not scaled as Frame uses CSS overflow:hidden */
+	#holder {position:relative; margin:20px 0px; height:200px;}
+</style>
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"		sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"		sets stage to window size with no scaling
+// "tagID"		add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+var scaling = "holder"; // use the ID of a tag to place the canvas in the tag
+var frame = new Frame(scaling); // see docs for more options and info
+frame.on("ready", function() {
+	zog("ready from ZIM Frame");
+
+	var stage = frame.stage;
+	var stageW = frame.width;
+	var stageH = frame.height;
+	frame.color = pink; // ZIM colors now available globally
+
+	// put your code here (you can delete this code)
+
+	var button = new Button(140, 60, "ZIM", frame.grey, frame.dark);
+	// will position and scale the code in the resize function at bottom
+	button.on("click", function() { // on() is like addEventListener()
+		zgo("http://zimjs.com/frame.html"); // or relative URL, target is available too
+	});
+
+	// put resizing code in here
+	frame.on("resize", resize);
+	function resize(e) {
+		stageW = frame.width;
+		stageH = frame.height;
+		button.scaleTo(stage, 30); // also see zim.Layout() for more complex scaling
+		button.center(); // centers on stage - addTo() and others as well!
+		stage.update();
+	}
+
+}); // end of ready
+
+</script>
+</head>
+
+<body>
+<article>
+	<h3>ZIM Frame Tag mode (without dimensions)</h3>
+	<p>This template shows how to place a DIMENSIONLESS Canvas in an HTML element with a specified tag ID (holder in this case).  ZIM Frame will make the Canvas with an id the same as the holder tag but with the word Canvas added to the end.  The stage size will be set to the holder tag dimensions - the content is not scaled so you need to size / scale items with code (like in Full mode).</p>
+	<div id="holder"></div>
+	<p>Frame uses appendChild() to add the canvas tag to the specified element. offsetWidth and offsetHeight are used to measure the element and values are updated in the resize event.  CSS overflow:hidden is used to show the canvas only in the element.
+	<p>
+	<a href="http://zimjs.com/frame.html" style="outline:none;"><img src="content/logo.png" style="width:100px; margin-bottom:-10px;"/></a>
+	</p>
+</article>
+</body>
+</html>

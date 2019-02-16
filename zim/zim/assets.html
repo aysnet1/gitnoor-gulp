@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM Frame - Assets Template</title>
+
+<!-- for CreateJS and ZIMjs http://zimjs.com - free to modify - Dan Zen 2016 -->
+<!-- see http://zimjs.com/frame.html for more templates and meta tags -->
+
+<script src="https://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+<script>
+	var zon = true; // set to false to turn off console messages from zim
+	var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
+</script>
+<script src="https://d309knd7es5f10.cloudfront.net/zim_9.5.1.js"></script><!-- add _doc to see code -->
+<!-- use zimjs.com/distill for minified individual functions! -->
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"		sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"		sets stage to window size with no scaling
+// "tagID"		add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+
+// ASSET LOADING
+// make a Frame object then use frame.loadAssets()
+// or pass the assets into the Frame class as it the object is made:
+
+// NOTE - loading assets into a local file causes security issues in Chrome
+// this problem does not occur once the files are on a server
+// and Firefox and Edge do not have an issue
+
+// ON PC:
+// To test locally, find your Chrome icon or shortcut, right click and choose properties
+// then under Target, adjust your target to include --allow-file-access-from-files (after the quotes)
+// eg. "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --allow-file-access-from-files
+
+// ON MAC
+// open your terminal anywhere, make sure Google Chrome is currently not running
+// copy paste this line and hit enter:
+// open /Applications/Google\ Chrome.app --args --allow-file-access-from-files
+
+// once again, there is no problem for end users when the files are on a server
+
+
+// LOADING IMAGES AND SOUND
+// provide a list of images or sounds,
+// font, audiosprites, text, json, etc. can also be loaded
+// can use relative path or just put the path on the asset
+// and if you have only one asset, no need for a list:
+// just use "logo.png"
+// you can also pass in a full loadAssets configuration object - see docs
+
+var assets = ["logo.png", "welcome.mp3"];
+var path = "content/";
+var frame = new Frame("fit", 1024, 768, lighter, dark, assets, path); // see docs for more options and info
+
+frame.on("ready", function() {
+	zog("ready from ZIM Frame");
+
+	var stage = frame.stage;
+	var stageW = frame.width;
+	var stageH = frame.height;
+
+	var logo = frame.asset("logo.png").cur().center().alp(0).animate({alpha:1}, 4000); // access asset (zim.Bitmap)
+	logo.on("click", function() { // on() is like addEventListener()
+		zgo("http://zimjs.com/frame.html"); // or relative URL, target is available too
+	});
+
+	// play sound which returns a createjs.Sound.play() sound instance object
+	var welcome = frame.asset("welcome.mp3").play();
+	// welcome.volume = .2; // etc.
+
+	stage.update();
+
+
+}); // end of ready
+</script>
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+</body>
+</html>
