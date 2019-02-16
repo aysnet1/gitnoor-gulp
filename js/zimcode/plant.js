@@ -1,9 +1,3 @@
-// SCALING OPTIONS
-// scaling can have values as follows with full being the default
-// "fit"		sets canvas and stage to dimensions and scales to fit inside window size
-// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
-// "full"		sets stage to window size with no scaling
-// "tagID"		add canvas to HTML tag of ID - set to dimensions if provided - no scaling
 
 var scaling = "fit"; // fit scales to fit the browser window while keeping the aspect ratio
 var width = 800; // can go higher...
@@ -23,12 +17,12 @@ frame.on("ready", function() {
 	// the field is a bit bigger than the canvas (and made for 1024x768 not 800x600)
 	// so we can pan the field as the butterfly moves from one side to the other
 	// to start, we scale the field to the stage height and center it on the stage
-	var field = frame.asset("field.png").scaleTo(stage, null, 100).center();
+	var field = frame.asset("f.png").scaleTo(stage, null, 100).center();
 
 	// BUTTERFLY
 	// we make a Sprite of the butterfly
 	var butterfly = new Sprite({
-		image:frame.asset("butterfly.png"),
+		image:frame.asset("but.png"),
 		cols:10, rows:4,
 		// this spritesheet has transitional animations
 		// and different directional loops due to the lighting
@@ -147,7 +141,7 @@ frame.on("ready", function() {
 	// we make the butterfly smaller when it is higher up (farther away)
 	// we also slow it down when it is smaller
 	// and we shift the field as we move left and right
-	// these all use ProportionDamp to map the values with damping for smoothness
+	// these all use ProportionDamp to map h the values with damping for smoothness
 	// we set up the objects and then use their convert() method in a Ticker function
 	var proportionSize = new ProportionDamp({
 		baseMin:0, baseMax:stageH,
