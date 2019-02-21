@@ -74,7 +74,7 @@ var dg = function drag_it(obj_item,){
 
 		}
 		dg(plante);
-		dg(ina)
+		dg(ina);
 
 stage.update();
 	});
