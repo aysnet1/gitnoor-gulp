@@ -21,7 +21,7 @@ frame.on("ready", function() {
 
   plante=frame.asset("plante1.png").addTo(stage).sca(0.33)
 
-  ina=frame.asset("ina2.png").addTo(stage).sca(0.5)
+  ina=frame.asset("a1.jpg").addTo(stage).sca(0.5)
 		var list = new List({
    list:[plante, ina],
 			 titleBar:"            الادوات",
@@ -42,8 +42,8 @@ frame.on("ready", function() {
 }).center().pos(-1,0)
 
 
-var current;
-var dg = function drag_it(obj_item,){
+
+var dg = function drag_it(obj_item,current){
 
 	obj_item.on("mousedown", function(e) {
 			current = e.target;
@@ -74,7 +74,7 @@ var dg = function drag_it(obj_item,){
 
 		}
 		dg(plante);
-		dg(ina);
+ dg(ina);
 
 stage.update();
 	});
@@ -83,8 +83,7 @@ stage.update();
 			stageW = frame.width;
 			stageH = frame.height;
 
-			// resize the layout
-			layout.resize();
+
 
 			stage.update();
 		}
