@@ -1,4 +1,4 @@
-var scaling = "fit"; // this will resize to fit inside the screen dimensions
+var scaling = "full"; // this will resize to fit inside the screen dimensions
 var width = 1000;
 var height = 800;
 var color = "rgb(119, 97, 113)"; // or any HTML color such as "violet" or "#333333"
