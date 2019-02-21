@@ -39,7 +39,7 @@ frame.on("ready", function() {
 			 backdropColor:white,
 
 
-}).center().pos(0,0)
+}).center().pos(-1,0)
 
 
 var current;
