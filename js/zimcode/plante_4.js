@@ -24,7 +24,7 @@ frame.on("ready", function() {
   ina=frame.asset("ina2.png").addTo(stage).sca(0.5)
 		var list = new List({
    list:[plante, ina],
-			 titleBar:"الادوات",
+			 titleBar:"            الادوات",
 			 titleBarBackgroundColor:orange,
 			 titleBarColor:white,
 			 titleBarHeight:40,
@@ -74,6 +74,7 @@ var dg = function drag_it(obj_item,){
 
 		}
 		dg(plante);
+		dg(ina)
 
 stage.update();
 	});
