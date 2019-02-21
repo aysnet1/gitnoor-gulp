@@ -9,13 +9,14 @@
 <!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
 <!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
 
-<script src="https://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 <script>
 	var zon = true; // set to false to turn off console messages from zim
 	var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
 </script>
 <script src="https://d309knd7es5f10.cloudfront.net/zim_9.5.1.js"></script><!-- add _doc to see code -->
 <!-- use zimjs.com/distill for minified individual functions! -->
+<script src="tez.js"></script>
 
 <script>
 
@@ -39,13 +40,13 @@ frame.on("ready", function() {
 	var stage = frame.stage;
 	var stageW = frame.width;
 	var stageH = frame.height;
+	var comp=AdobeAn.getComposition("2F72525ED3BC70458A0C18397BD93BC2");
+	var lib= comp.getLibrary();
 
 	// put your code here (you can delete this code)
 
-	var button = new Button(140, 60, "ZIM").center(); // centers on stage - addTo() and others as well!
-	button.on("click", function() { // on() is like addEventListener()
-		zgo("http://zimjs.com/frame.html"); // or relative URL, target is available too
-	});
+ var test = new zimify(new lib.tez())
+           .addto(stage)
 
 	stage.update(); // update the stage to see any changes
 
