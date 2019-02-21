@@ -77,7 +77,17 @@ var dg = function drag_it(obj_item,){
 
 stage.update();
 	});
+	frame.on("resize", resize);
+		function resize(e) {
+			stageW = frame.width;
+			stageH = frame.height;
 
+			// resize the layout
+			layout.resize();
+
+			stage.update();
+		}
+		resize();
 
 	stage.update();
 
