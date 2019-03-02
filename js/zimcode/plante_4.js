@@ -1,12 +1,11 @@
 var scaling = "full";
-var width = 900;
-var height = 700;
+
 var assets = ["table.jpg","plante1.png"];
 var path = "assets/images/plante/";
 
 
 
-var frame = new Frame(scaling, width, height,null,null,assets,path);
+var frame = new Frame(scaling, null, null,null,null,assets,path);
 frame.on("ready", function() {
 
 
@@ -60,8 +59,6 @@ plante.on("mousedown", function() {
 	plante.on("pressup", function() {
 		// 3. inside the function do a conditional for the hitTest
 		if (plante.hitTestBounds(tf)) {
-
-
 	    plante.x =tf.x
       plante.y= tf.y-50
 
@@ -91,7 +88,6 @@ var border = new Rectangle(bounds.width+10+tf.width, bounds.height+10+tf.height,
 
     });
 
-plante.outline()
     var label = new Label({
        text:"تسريع : "+1 ,
        size:20,
@@ -101,7 +97,7 @@ plante.outline()
        fontOptions:"italic bold",
      });
        label.pos(1000, 50);
-tf.outline()
+
 
 
  // tf.on("pressup", function(e) {
@@ -175,7 +171,16 @@ tf.outline()
   //
   // }
   //dg(sup); // call fn drag(item)
+  frame.on("resize", resize);
+  	function resize(e) {
+  		stageW = frame.width;
+  		stageH = frame.height;
 
+
+
+  		stage.update();
+  	}
+  	resize();
 
 
 
