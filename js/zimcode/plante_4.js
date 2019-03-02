@@ -1,11 +1,11 @@
-var scaling = "full";
+var scaling = "fit";
 
 var assets = ["table.jpg","plante1.png"];
 var path = "assets/images/plante/";
 
 
 
-var frame = new Frame(scaling, null, null,null,null,assets,path);
+var frame = new Frame(scaling, 1000, 800,null,null,assets,path);
 frame.on("ready", function() {
 
 
@@ -14,14 +14,14 @@ frame.on("ready", function() {
   var stageH = frame.height;
   // container item one tube +support cadre
      table = frame.asset("table.jpg").sca(.5).centerReg(stage);
-      table.pos(0,300);
+      table.pos(0,400);
 
       plante = frame.asset("plante1.png").sca(.2).centerReg(stage).drag({onTop:false});
 
-      plante.pos(700, 70)
+      plante.pos(500, 70)
    tf = new Rectangle(234,279,"#fff0");
 
-  	var bounds = new Boundary(100,80,700,400);
+
       t1 = new Shape();
     	t1.graphics.f().s("rgba(51,51,51,0.6)").ss(1,1,1).p("AK50EIAAdiIAAIpQAAB+iHAAIxiAAQiIAAAAh+Aq4JeIAA9i");
     	t1.setTransform(119.5001,196.703,0.9555,1.0252);
@@ -49,7 +49,7 @@ frame.on("ready", function() {
 
   eau.scaleY = 1;
  var label= "جرب الان"
-var  btn = new Button(300,100,label).addTo(stage).pos(1000,100)
+var  btn = new Button(300,100,label).addTo(stage).pos(650,100)
 
 
 plante.on("mousedown", function() {
@@ -59,11 +59,11 @@ plante.on("mousedown", function() {
 	plante.on("pressup", function() {
 		// 3. inside the function do a conditional for the hitTest
 		if (plante.hitTestBounds(tf)) {
-	    plante.x =tf.x
+	    plante.x =tf.x+14
       plante.y= tf.y-50
 
       btn.on("mousedown",function () {
-      eau.animate({props:{scaleY:0.5},ease:"linear",time:40000,set:{percentSpeed:1}})
+      eau.animate({props:{scaleY:0.6},ease:"linear",time:40000,set:{percentSpeed:1}})
     });
 
 
@@ -77,10 +77,9 @@ stage.update();
   tf.addChild(eau,t1,t2 ,t4,t5)
   tf.sca(0.9)
 
-tf.centerReg(stage).drag({boundary:bounds,currentTarget:true});
-var border = new Rectangle(bounds.width+10+tf.width, bounds.height+10+tf.height, null, "#666", 1, 0, null, true)
-		.pos(0, -1);
-   slider = new Slider(1,10).pos(1000, 10);
+tf.centerReg(stage).drag({currentTarget:true});
+
+   slider = new Slider(1,10).pos(650, 10);
 
     slider.on("change", function () {
       eau.percentSpeed= Math.floor(slider.currentValue*10)
@@ -96,7 +95,7 @@ var border = new Rectangle(bounds.width+10+tf.width, bounds.height+10+tf.height,
        rollColor:"red",
        fontOptions:"italic bold",
      });
-       label.pos(1000, 50);
+       label.pos(650, 50);
 
 
 
@@ -171,6 +170,11 @@ var border = new Rectangle(bounds.width+10+tf.width, bounds.height+10+tf.height,
   //
   // }
   //dg(sup); // call fn drag(item)
+// reeee
+
+
+
+  // resize
   frame.on("resize", resize);
   	function resize(e) {
   		stageW = frame.width;
