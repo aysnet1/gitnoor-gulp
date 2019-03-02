@@ -121,7 +121,7 @@ if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)   ) {
   // add tube to containe
   tf.addChild(eau, t1, t2, t4, t5)
   tf.sca(0.9)
-  table.outline()
+ 
   tf.centerReg(stage).drag({
     currentTarget: true
   });
