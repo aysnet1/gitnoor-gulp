@@ -19,7 +19,7 @@ frame.on("ready", function() {
   plante = frame.asset("plante.png").sca(.2).centerReg(stage).drag({
     onTop: false
   });
-
+  ///اا
   plante.pos(50,110)
 
   tf = new Rectangle(234, 279, "#fff0");
