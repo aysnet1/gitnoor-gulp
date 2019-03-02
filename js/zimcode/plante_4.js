@@ -1,11 +1,11 @@
 var scaling = "fit";
 
-var assets = ["table.jpg","plante1.png"];
+var assets = ["table.jpg", "plante.png"];
 var path = "assets/images/plante/";
 
 
 
-var frame = new Frame(scaling, 1000, 800,null,null,assets,path);
+var frame = new Frame(scaling, 1000, 800, null, null, assets, path);
 frame.on("ready", function() {
 
 
@@ -13,119 +13,167 @@ frame.on("ready", function() {
   var stageW = frame.width;
   var stageH = frame.height;
   // container item one tube +support cadre
-     table = frame.asset("table.jpg").sca(.5).centerReg(stage);
-      table.pos(0,400);
+  table = frame.asset("table.jpg").sca(.5).centerReg(stage);
+  table.pos(0, 400);
 
-      plante = frame.asset("plante1.png").sca(.2).centerReg(stage).drag({onTop:false});
+  plante = frame.asset("plante.png").sca(.2).centerReg(stage).drag({
+    onTop: false
+  });
 
-      plante.pos(500, 70)
-   tf = new Rectangle(234,279,"#fff0");
+  plante.pos(180,110)
 
-
-      t1 = new Shape();
-    	t1.graphics.f().s("rgba(51,51,51,0.6)").ss(1,1,1).p("AK50EIAAdiIAAIpQAAB+iHAAIxiAAQiIAAAAh+Aq4JeIAA9i");
-    	t1.setTransform(119.5001,196.703,0.9555,1.0252);
-
-      t2 = new Shape();
-      t2.graphics.f("rgba(102,102,102,0.588)").s().p("AoxUEQiHAAAAh9IAAopIAA9hIVxAAIAAdhIAAIpQAAB9iHAAg");
-      t2.setTransform(119.5001,196.703,0.9555,1.0252);
+  tf = new Rectangle(234, 279, "#fff0");
 
 
+  t1 = new Shape();
+  t1.graphics.f().s("rgba(51,51,51,0.6)").ss(1, 1, 1).p("AK50EIAAdiIAAIpQAAB+iHAAIxiAAQiIAAAAh+Aq4JeIAA9i");
+  t1.setTransform(119.5001, 196.703, 0.9555, 1.0252);
 
-    	t4 = new Shape();
-    	t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9,1,1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
-    	t4.setTransform(119,43.5);
+  t2 = new Shape();
+  t2.graphics.f("rgba(102,102,102,0.588)").s().p("AoxUEQiHAAAAh9IAAopIAA9hIVxAAIAAdhIAAIpQAAB9iHAAg");
+  t2.setTransform(119.5001, 196.703, 0.9555, 1.0252);
 
-    	t5 = new Shape();
-    	t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
-    	t5.setTransform(119,43.5);
 
-  eau = new Rectangle({width:133, height:255, color:"rgba(0,0,255,0.588)", corner:[0, 0, 12,12]});
+
+  t4 = new Shape();
+  t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9, 1, 1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
+  t4.setTransform(119, 43.5);
+
+  t5 = new Shape();
+  t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
+  t5.setTransform(119, 43.5);
+
+  eau = new Rectangle({
+    width: 133,
+    height: 255,
+    color: "rgba(0,0,255,0.588)",
+    corner: [0, 0, 12, 12]
+  });
   eau.centerReg(tf)
-  eau.x=52.45*2+15;
-  eau.y=328;
-  eau.regX= eau.width/2;
-  eau.regY= eau.height;
+  eau.x = 52.45 * 2 + 15;
+  eau.y = 328;
+  eau.regX = eau.width / 2;
+  eau.regY = eau.height;
 
   eau.scaleY = 1;
- var label= "جرب الان"
-var  btn = new Button(300,100,label).addTo(stage).pos(650,100)
+  var label = "جرب الان"
+  var btn = new Button(300, 100, label).addTo(stage).pos(650, 100)
 
+  var resultat
+  plante.on("mousedown", function() {
+    tf.carry = false;
+  });
 
-plante.on("mousedown", function() {
-		 tf.carry = false;
-	});
+  plante.on("pressup", function() {
+    // 3. inside the function do a conditional for the hitTest
+    if (plante.hitTestBounds(tf)) {
+      plante.animate({
+        props: {
+          x: tf.x,
+          y: tf.y - 60
+        },
+        ease: "linear",
+        time: 400,
+        set: {
+          percentSpeed: 1
+        }
+      })
+      var resultat = true;
+    }
+    stage.update();
+  });
+  tf.on("pressup", function() {
 
-	plante.on("pressup", function() {
-		// 3. inside the function do a conditional for the hitTest
-		if (plante.hitTestBounds(tf)) {
-	    plante.x =tf.x+14
-      plante.y= tf.y-50
+    if (tf.hitTestBounds(table)) {
+      tf.animate({
+        props: {
+          x: table.x,
+          y: table.y - tf.height + 10
+        },
+        ease: "linear",
+        time: 400,
+        set: {
+          percentSpeed: 1
+        }
+      })
 
-      btn.on("mousedown",function () {
-      eau.animate({props:{scaleY:0.6},ease:"linear",time:40000,set:{percentSpeed:1}})
-    });
+    }
+    stage.update();
+  });
 
+    btn.on("mousedown", function() {
+if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)   ) {
+      eau.animate({
+        props: {
+          scaleY: 0.5
+        },
+        ease: "linear",
+        time: 400,
+        set: {
+          percentSpeed: 1
+        }
+      })
 
-		}
-stage.update();
-	});
-
+  }
+  });
 
 
   // add tube to containe
-  tf.addChild(eau,t1,t2 ,t4,t5)
+  tf.addChild(eau, t1, t2, t4, t5)
   tf.sca(0.9)
+  table.outline()
+  tf.centerReg(stage).drag({
+    currentTarget: true
+  });
+  tf.pos(283,90)
 
-tf.centerReg(stage).drag({currentTarget:true});
+  slider = new Slider(1, 10).pos(650, 10);
 
-   slider = new Slider(1,10).pos(650, 10);
+  slider.on("change", function() {
+    eau.percentSpeed = Math.floor(slider.currentValue * 10)
+    label.text = "تسريع :" + Math.floor(slider.currentValue)
 
-    slider.on("change", function () {
-      eau.percentSpeed= Math.floor(slider.currentValue*10)
-      label.text=   "تسريع :" + Math.floor( slider.currentValue)
+  });
 
-    });
-
-    var label = new Label({
-       text:"تسريع : "+1 ,
-       size:20,
-       font:"courier",
-       color:"black",
-       rollColor:"red",
-       fontOptions:"italic bold",
-     });
-       label.pos(650, 50);
+  var label = new Label({
+    text: "تسريع : " + 1,
+    size: 20,
+    font: "courier",
+    color: "black",
+    rollColor: "red",
+    fontOptions: "italic bold",
+  });
+  label.pos(650, 50);
 
 
 
- // tf.on("pressup", function(e) {
- //
- //
- //
- //     if (tf.hitTestReg(table)  ) {
- //       zog("hhhh")
- //
- //
- //
- //       var point = table.localToLocal(table.x, table.y, tf);
- //       tf.animate({x:point.x, y:point.y}, 100);
- //
- //       result = "done"
- //     } else {
- //       zog("bb")
- //
- //       result=""
- //     }
- //
- //   if (result == "done") return;
- //   zog("3")
- //
- //   // 9. if the object hits no targets then move the target back to the startX and startY
- //   tf.animate({x:tf.startX, y:tf.startY}, 300);
- // });
+  // tf.on("pressup", function(e) {
+  //
+  //
+  //
+  //     if (tf.hitTestReg(table)  ) {
+  //       zog("hhhh")
+  //
+  //
+  //
+  //       var point = table.localToLocal(table.x, table.y, tf);
+  //       tf.animate({x:point.x, y:point.y}, 100);
+  //
+  //       result = "done"
+  //     } else {
+  //       zog("bb")
+  //
+  //       result=""
+  //     }
+  //
+  //   if (result == "done") return;
+  //   zog("3")
+  //
+  //   // 9. if the object hits no targets then move the target back to the startX and startY
+  //   tf.animate({x:tf.startX, y:tf.startY}, 300);
+  // });
 
- // 10. optional highlight the target if they are eligable for drop - use a pressmove event
+  // 10. optional highlight the target if they are eligable for drop - use a pressmove event
 
 
   // new list item
@@ -134,9 +182,9 @@ tf.centerReg(stage).drag({currentTarget:true});
   // var list = new List({
   //   list: [sup],
   //   titleBar: "items",
-	//
+  //
   //   viewNum: 3
-	//
+  //
   // }).center().pos(-1, 0)
 
 
@@ -170,21 +218,22 @@ tf.centerReg(stage).drag({currentTarget:true});
   //
   // }
   //dg(sup); // call fn drag(item)
-// reeee
+  // reeee
 
 
 
   // resize
   frame.on("resize", resize);
-  	function resize(e) {
-  		stageW = frame.width;
-  		stageH = frame.height;
+
+  function resize(e) {
+    stageW = frame.width;
+    stageH = frame.height;
 
 
 
-  		stage.update();
-  	}
-  	resize();
+    stage.update();
+  }
+  resize();
 
 
 
