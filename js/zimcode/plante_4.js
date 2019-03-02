@@ -20,7 +20,7 @@ frame.on("ready", function() {
     onTop: false
   });
 
-  plante.pos(180,110)
+  plante.pos(50,110)
 
   tf = new Rectangle(234, 279, "#fff0");
 
@@ -108,7 +108,7 @@ if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)   ) {
           scaleY: 0.5
         },
         ease: "linear",
-        time: 400,
+        time: 40000,
         set: {
           percentSpeed: 1
         }
@@ -121,7 +121,7 @@ if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)   ) {
   // add tube to containe
   tf.addChild(eau, t1, t2, t4, t5)
   tf.sca(0.9)
- 
+
   tf.centerReg(stage).drag({
     currentTarget: true
   });
