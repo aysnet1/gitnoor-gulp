@@ -19,12 +19,12 @@ frame.on("ready", function() {
   plante = frame.asset("plante.png").sca(.2).centerReg(stage).drag({
     onTop: false
   });
-  ///اا
-  plante.pos(50,110)
+  //
+  plante.pos(50, 110)
 
   tf = new Rectangle(234, 279, "#fff0");
 
-
+  // القارورة
   t1 = new Shape();
   t1.graphics.f().s("rgba(51,51,51,0.6)").ss(1, 1, 1).p("AK50EIAAdiIAAIpQAAB+iHAAIxiAAQiIAAAAh+Aq4JeIAA9i");
   t1.setTransform(119.5001, 196.703, 0.9555, 1.0252);
@@ -34,7 +34,7 @@ frame.on("ready", function() {
   t2.setTransform(119.5001, 196.703, 0.9555, 1.0252);
 
 
-
+  // غطاء القارورة-- Vial-top
   t4 = new Shape();
   t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9, 1, 1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
   t4.setTransform(119, 43.5);
@@ -42,6 +42,18 @@ frame.on("ready", function() {
   t5 = new Shape();
   t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
   t5.setTransform(119, 43.5);
+  // stopper--
+
+  t6 = new Rectangle(54, 29).addTo(stage).drag({
+    onTop: false
+  });
+  t7 = new Rectangle(27, 29, 'blue').addTo(t6);
+  t6.y = 250;
+  t6.x = 680
+  t6.regX = t6.width / 2;
+  t6.regY = t6.height;
+
+  // الماء متحرك -- Water animated--
 
   eau = new Rectangle({
     width: 133,
@@ -100,9 +112,28 @@ frame.on("ready", function() {
     }
     stage.update();
   });
+  t6.on("pressup", function() {
 
-    btn.on("mousedown", function() {
-if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)   ) {
+    if (t6.hitTestBounds(tf)) {
+      t6.animate({
+        props: {
+          x: tf.x + 1.9,
+          y: tf.y - 72
+        },
+        ease: "linear",
+        time: 400,
+        set: {
+          percentSpeed: 1
+        }
+      })
+
+    }
+    stage.update();
+  });
+
+  btn.on("mousedown", function() {
+    if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)) {
+      tf.noDrag()
       eau.animate({
         props: {
           scaleY: 0.5
@@ -114,18 +145,18 @@ if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)   ) {
         }
       })
 
-  }
+    }
   });
 
 
-  // add tube to containe
+  // add vial to containe
   tf.addChild(eau, t1, t2, t4, t5)
   tf.sca(0.9)
 
   tf.centerReg(stage).drag({
     currentTarget: true
   });
-  tf.pos(283,90)
+  tf.pos(283, 90)
 
   slider = new Slider(1, 10).pos(650, 10);
 
