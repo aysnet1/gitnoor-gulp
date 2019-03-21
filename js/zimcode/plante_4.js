@@ -2,16 +2,20 @@ var scaling = "fit";
 
 var assets = ["table.jpg", "plante.png"];
 var path = "assets/images/plante/";
+var width = 1024;
+var height = 768;
 
 
-
-var frame = new Frame(scaling, 1000, 800, null, null, assets, path);
+var frame = new Frame(scaling, width, 768, null, null, assets, path);
 frame.on("ready", function() {
 
 
   var stage = frame.stage;
   var stageW = frame.width;
   var stageH = frame.height;
+   frame.outerColor = "#444";
+   frame.color = frame.white;
+
   // container item one tube +support cadre
   table = frame.asset("table.jpg").sca(.5).centerReg(stage);
   table.pos(0, 400);
@@ -147,7 +151,6 @@ frame.on("ready", function() {
 
     }
   });
-
 
   // add vial to containe
   tf.addChild(eau, t1, t2, t4, t5)
