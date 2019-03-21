@@ -19,12 +19,14 @@ frame.on("ready", function() {
   // container item one tube +support cadre
   table = frame.asset("table.jpg").sca(.5).centerReg(stage);
   table.pos(0, 400);
+  panel = new Panel({height:stageH,titleBar:"      أدوات التجربة"}).addTo(stage)
+  panel.pos(stageW-panel.width,0)
 
-  plante = frame.asset("plante.png").sca(.2).centerReg(stage).drag({
+  plante = frame.asset("plante.png").sca(.2).centerReg(panel).drag({
     onTop: false
   });
   //
-  plante.pos(50, 110)
+  plante.pos(50, 35)
 
   tf = new Rectangle(234, 279, "#fff0");
 
@@ -72,10 +74,8 @@ frame.on("ready", function() {
   eau.regY = eau.height;
 
   eau.scaleY = 1;
-  var label = "جرب الان"
-  var btn = new Button(300, 100, label).addTo(stage).pos(650, 100)
 
-  var resultat
+
   plante.on("mousedown", function() {
     tf.carry = false;
   });
@@ -101,10 +101,11 @@ frame.on("ready", function() {
   tf.on("pressup", function() {
 
     if (tf.hitTestBounds(table)) {
+
       tf.animate({
         props: {
-          x: table.x,
-          y: table.y - tf.height + 10
+          x: -(table.x+150),
+          y: table.y - tf.height
         },
         ease: "linear",
         time: 400,
@@ -135,49 +136,34 @@ frame.on("ready", function() {
     stage.update();
   });
 
-  btn.on("mousedown", function() {
-    if (plante.hitTestBounds(tf) && tf.hitTestBounds(table)) {
-      tf.noDrag()
-      eau.animate({
-        props: {
-          scaleY: 0.5
-        },
-        ease: "linear",
-        time: 40000,
-        set: {
-          percentSpeed: 1
-        }
-      })
 
-    }
-  });
 
   // add vial to containe
   tf.addChild(eau, t1, t2, t4, t5)
   tf.sca(0.9)
 
-  tf.centerReg(stage).drag({
+  tf.centerReg(panel).drag({
     currentTarget: true
   });
-  tf.pos(283, 90)
+  tf.pos(20, 250)
 
-  slider = new Slider(1, 10).pos(650, 10);
-
-  slider.on("change", function() {
-    eau.percentSpeed = Math.floor(slider.currentValue * 10)
-    label.text = "تسريع :" + Math.floor(slider.currentValue)
-
-  });
-
-  var label = new Label({
-    text: "تسريع : " + 1,
-    size: 20,
-    font: "courier",
-    color: "black",
-    rollColor: "red",
-    fontOptions: "italic bold",
-  });
-  label.pos(650, 50);
+  // slider = new Slider(1, 10).pos(650, 10);
+  //
+  // slider.on("change", function() {
+  //   eau.percentSpeed = Math.floor(slider.currentValue * 10)
+  //   label.text = "تسريع :" + Math.floor(slider.currentValue)
+  //
+  // });
+  //
+  // var label = new Label({
+  //   text: "تسريع : " + 1,
+  //   size: 20,
+  //   font: "courier",
+  //   color: "black",
+  //   rollColor: "red",
+  //   fontOptions: "italic bold",
+  // });
+  // label.pos(650, 50);
 
 
 
