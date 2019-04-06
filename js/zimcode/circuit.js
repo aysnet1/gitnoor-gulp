@@ -20,14 +20,16 @@
    pil = frame.asset("pil.png").addTo(stage).pos(100, 400).sca(0.6);
    lamp_light= frame.asset("lo1.png").pos(400, 200).sca(0.3);
    lamp = frame.asset("ll1.png").pos(100, 400).sca(0.3);
-   var current;
 
- 	lamp_light.on("mousedown", function(e) {
+  function Aysser(obj,x,y,sca) {
+     var current;
+ 	obj.on("mousedown", function(e) {
  		current = e.target;
  		current.copy = current.clone()
-
- 			.addTo()
- 			.drag();
+      .center()
+      .sca(sca)
+      .drag()
+       .pos(x,y);
 
  		// 4. put the copy under the object we are dragging
  		stage.setChildIndex(current, stage.numChildren-1);
@@ -35,24 +37,12 @@
  		current.startY = copy.y = current.y;
  		stage.update();
  	});
+  }
+
+    new Aysser(lamp,292,290,0.5)
 
 
- //	5. on a pressup, swap the two objects
- 	lamp_light.on("pressup", function(e) {
- 		current = e.currentTarget;
- 		// swap positions
 
- 		swapProperties("x", current, current.copy);
- 		swapProperties("y", current, current.copy);
-   //
- 	// 	// or do the above manually:
- 	// 	//current.copy.x = current.x;
- 	// 	//current.copy.y = current.y;
- 	// 	//current.x = current.startX;
- 		//current.y = current.startY;
-
- 		stage.update();
- 	});
 
 
 
