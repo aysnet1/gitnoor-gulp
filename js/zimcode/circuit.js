@@ -8,14 +8,15 @@ const frame = new Frame({
        { barType:"Rectangle",
         color:dark,
         backingColor:grey, // some patterns are partially transparent so this may affect colors
-        borderColor:dark,   corner:0,
-        borderWidth:10,
+        borderColor:dark,
+        corner:0,
+      //  borderWidth:10,
         label:"LOADING",
         labelPosition:"above",
-         padding:3,
+        // padding:3,
         percentage:true,
-        fastClose:true,
-}) 
+        //fastClose:true,
+})
 });
 frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
 
