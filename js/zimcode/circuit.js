@@ -6,8 +6,8 @@ const frame = new Frame({
   path: "assets/images/circuit/",
   progress: new ProgressBar(
        { barType:"Rectangle",
-        color:dark,
-        backingColor:grey, // some patterns are partially transparent so this may affect colors
+        color:"rgb(153, 193, 255)",
+        backingColor:"rgb(153, 193, 255)", // some patterns are partially transparent so this may affect colors
         borderColor:dark,
         corner:0,
       //  borderWidth:10,
