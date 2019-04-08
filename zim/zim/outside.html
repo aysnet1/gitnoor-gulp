@@ -46,7 +46,15 @@ frame.on("ready", function() {
 	button.on("click", function() { // on() is like addEventListener()
 		zgo("http://zimjs.com/frame.html"); // or relative URL, target is available too
 	});
+	ar =new zim.Rectangle(300,400).center()
+	ar.gesture({
 
+
+	   minScale:.5,
+	   maxScale:3,
+
+
+	})
 	// WARNING - the stage will go off the screen in the outside mode
 	// resize the window and see what happens to this circle which is positioned at the top left of the stage
 	var radius = 50;
