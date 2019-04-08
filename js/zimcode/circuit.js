@@ -22,7 +22,7 @@ frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
 
 
 
-  const left = new Container(100, stageH).addTo();
+  const left = new Container(200, stageH).addTo();
 
 
   var list = new List({
