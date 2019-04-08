@@ -1,107 +1,79 @@
+const frame = new Frame({
+  scaling:"full",
+  color: darker,
+  allowDefault: true,
+  assets: ["battrey.png", "pil.png", "ll1.png", "lo1.png"],
+  path: "assets/images/circuit/"
+});
+frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
 
 
- var assets = ["battrey.png", "pil.png", "ll1.png", "lo1.png"];
- var path = "assets/images/circuit/";
- var width = 1024;
- var height = 768;
+  let stage = frame.stage;
+  let stageW = frame.width;
+  let stageH = frame.height;
 
+  frame.outerColor = "#444";
+  frame.color = "#99c1ff";
 
- var frame = new Frame("outside", 1024, 768, null, null, assets, path);
- frame.on("ready", function() {
-
-
-   var stage = frame.stage;
-   var stageW = frame.width;
-   var stageH = frame.height;
-   frame.outerColor = "#444";
-   frame.color = "#99c1ff";
-
-   battry = frame.asset('battrey.png').sca(0.5);
-   pil = frame.asset("pil.png").pos(100, 400).sca(0.6);
-   lamp_light = frame.asset("lo1.png").sca(0.3);
-   lamp = frame.asset("ll1.png").pos(100, 400).sca(0.3);
-
-
-   //   function Aysser(obj,x,y,sca) {
-   //
-   // kell= 	obj.on("mousedown", function (e) {
-   //   current = e.target
-   //   obj  =  current.copy = current.clone()
-   //       .center()
-   //       .sca(sca)
-   //       .drag()
-   //       .pos(x,y)
-   //        obj.outline()
-   //
-   //
-   //
-   //
-   //
-   //  		// 4. put the copy under the object we are dragging
-   //  		stage.setChildIndex(current, stage.numChildren-1);
-   //  		current.startX = copy.x = current.x;
-   //  		current.startY = copy.y = current.y;
-   //  		stage.update();
-   //
-   //  	} );
-   //   }
-   //
-   //    new Aysser(lamp,292,290,0.5)
-   //     ad=  new Aysser(pil,400,290,0.8)
-   //
-   //
-   // ar =new zim.Rectangle(300,400).center()
-   // ar.gesture({
-   //
-   //
-   //    minScale:.5,
-   //    maxScale:3,
-   //
-   //
-   // })
+  var battry = frame.asset('battrey.png').sca(0.5);
+  var pil = frame.asset("pil.png").pos(100, 400).sca(0.6);
+  var lamp_light = frame.asset("lo1.png").sca(0.3);
+  var lamp = frame.asset("ll1.png").pos(100, 400).sca(0.3);
 
 
 
+  const left = new Container(150, stageH).addTo();
 
 
+  var list = new List({
+    width: left.width,
+    height:left.height,
+    list: [
+      battry, pil, lamp
+    ],
+    borderWidth: 4,
+    borderColor: "black",
+    backdropColor: "#ffffff",
+    close: false,
+    scrollBarColor: "red",
+    currentSelected: true,
+    swipe: false,
+    vertical: true,
+    spacing: 0,
+    align: "center",
+  }).centerReg(left);
 
 
-
-   list = new List({
-     width: 200,
-     height: stageH,
-     list: [
-       battry, pil, lamp
-     ],
-     borderWidth: 4,
-     borderColor: "black",
-     backdropColor: "#ffffff",
-     close: false,
-     scrollBarColor: "red",
-     currentSelected: true,
-     swipe: false,
-     vertical: true,
-     spacing: 0,
-     align: "center",
-   }).addTo();
+  const middle = new Container(stageW-left.width, stageH).addTo();
+  var fn = (e) => {
+    curr = e.target
+    curr.center(middle).drag();
+    curr.scale = curr.scale + 0.2
 
 
+    stage.update();
+  };
+  battry.tap(fn);
+  pil.tap(fn);
+  lamp.tap(fn);
 
-   // function call => tap(call)
+  var layout = new Layout(stage, [{
+      object: left
+    },
+    {
+      object: middle
+    },
+    // {object:right, align:"center", minWidth:20, maxHeight:90}
+  ], 0, null, false,new Shape()); // container, regions, last margin, backing color, vertical, boundary shape
 
-   fn = function(e) {
-     curr = e.target
-     curr.center(stage,1)
+  // here is the frame resize event (same as window.addEventListener("resize", ()=>{}))
+  frame.on("resize", resize);
 
-       .drag()
-
-
-     stage.update();
-   };
-
-   battry.tap(fn)
+  function resize() {
+    stageW = frame.width;
+    stageH = frame.height;
+    layout.resize();
+  }
 
 
-   stage.update();
-
- }); // end of ready
+}); // end of ready
