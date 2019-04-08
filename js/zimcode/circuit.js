@@ -28,12 +28,16 @@ frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
   frame.outerColor = "#444";
   frame.color = "#99c1ff";
 
-    const list = new Panel(200, stageH).addTo();
+    const list = new Container(200, stageH).addTo().drag();
 
   var battry = frame.asset('battrey.png').sca(0.5).center(list).pos(70,40);
-  var pil = frame.asset("pil.png").addTo(list).pos(70,90).sca(0.6);
-  var lamp_light = frame.asset("lo1.png").sca(0.3);
-  var lamp = frame.asset("ll1.png").pos(100, 400).sca(0.3);
+  var pil = frame.asset("pil.png").addTo(list).pos(65,150).sca(0.6);
+  var lamp_light = frame.asset("lo1.png").sca(0.4);
+  var lamp = frame.asset("ll1.png").addTo(list).pos(50,184).sca(0.4);
+
+
+
+
 
 
 
@@ -75,8 +79,9 @@ frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
       object: tab
     },
     {
-      object: list
+      object: list  ,backgroundColor:white
     },
+
     // {object:right, align:"center", minWidth:20, maxHeight:90}
   ], 0, null, false); // container, regions, last margin, backing color, vertical, boundary shape
 
