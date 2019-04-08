@@ -15,7 +15,7 @@ const frame = new Frame({
         labelPosition:"above",
         // padding:3,
         percentage:true,
-        //fastClose:true,
+        fastClose:false,
 })
 });
 frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
