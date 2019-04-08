@@ -22,7 +22,7 @@ frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
 
 
 
-  const left = new Container(150, stageH).addTo();
+  const left = new Container(100, stageH).addTo();
 
 
   var list = new List({
@@ -36,19 +36,19 @@ frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
     backdropColor: "#ffffff",
     close: false,
     scrollBarColor: "red",
-    currentSelected: true,
+    currentSelected: false,
     swipe: false,
     vertical: true,
     spacing: 0,
     align: "center",
-  }).centerReg(left);
+  }).center(left);
 
 
   const middle = new Container(stageW-left.width, stageH).addTo();
   var fn = (e) => {
     curr = e.target
-    curr.center(middle).drag();
-    curr.scale = curr.scale + 0.2
+    curr.addTo(middle).drag();
+   curr.scale =  0.6
 
 
     stage.update();
@@ -58,10 +58,10 @@ frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
   lamp.tap(fn);
 
   var layout = new Layout(stage, [{
-      object: left
+      object: middle
     },
     {
-      object: middle
+      object: left
     },
     // {object:right, align:"center", minWidth:20, maxHeight:90}
   ], 0, null, false); // container, regions, last margin, backing color, vertical, boundary shape
