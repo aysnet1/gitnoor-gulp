@@ -64,7 +64,7 @@ frame.on("ready", () => { // ES6 Arrow Function - similar to function(){}
       object: middle
     },
     // {object:right, align:"center", minWidth:20, maxHeight:90}
-  ], 0, null, false,new Shape()); // container, regions, last margin, backing color, vertical, boundary shape
+  ], 0, null, false); // container, regions, last margin, backing color, vertical, boundary shape
 
   // here is the frame resize event (same as window.addEventListener("resize", ()=>{}))
   frame.on("resize", resize);
