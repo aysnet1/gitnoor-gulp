@@ -6,7 +6,19 @@ var width = 1024;
 var height = 768;
 
 
-var frame = new Frame(scaling, width, 768, null, null, assets, path);
+var frame = new Frame(scaling, width, 768, null, null, assets, path,new ProgressBar({
+  barType: "Rectangle",
+  color: "rgb(153, 193, 255)",
+
+  borderColor: dark,
+  corner: 0,
+  //  borderWidth:10,
+  label: "LOADING",
+  labelPosition: "above",
+  // padding:3,
+  percentage: true,
+  fastClose: false,
+}));
 frame.on("ready", function() {
 
 
@@ -168,12 +180,11 @@ frame.on("ready", function() {
         props: {
           scaleY: 0.5
         },
-
+         events:true,
+        dynamic:true,
         ease: "linear",
         time: 40000,
-        set: {
-          percentSpeed: 1
-        }
+
       })
     }
 
@@ -199,6 +210,7 @@ var btn = new Button({
 });
 btn.addTo(stage);
 btn.pos(stageW-(panel.width+btn.width),0)
+
 btn.on("mousedown", function() {
    eau.pauseAnimate(!eau.paused);
 });
