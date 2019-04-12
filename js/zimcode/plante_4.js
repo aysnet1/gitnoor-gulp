@@ -6,7 +6,7 @@ var width = 1024;
 var height = 768;
 var pattern = pizzazz.makePattern({
         type:"slants",
-        colors:makeSeries([frame.brown, frame.grey]),
+        colors:makeSeries(["brown",  "grey"]),
         size:5,
         rows:20,
         cols:60,
