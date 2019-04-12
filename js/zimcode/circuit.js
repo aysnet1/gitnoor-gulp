@@ -34,7 +34,7 @@ frame.on("ready", () => {
 
 
 
-   
+
    battry = frame.asset('battrey.png').sca(0.5).pos(70, 40);
    pil = frame.asset("pil.png").addTo(list).pos(65, 150).sca(0.6);
    lamp_light = frame.asset("lo1.png").sca(0.4);

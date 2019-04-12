@@ -6,7 +6,8 @@ var width = 1024;
 var height = 768;
 
 
-var frame = new Frame(scaling, width, 768, null, null, assets, path,new ProgressBar({
+var frame = new Frame(scaling, width, 768, null, null, assets, path,
+  new ProgressBar({
   barType: "Rectangle",
   color: "rgb(153, 193, 255)",
 
@@ -26,7 +27,7 @@ frame.on("ready", function() {
   var stageW = frame.width;
   var stageH = frame.height;
   frame.outerColor = "#444";
-  frame.color = frame.white;
+  frame.color = "#99c1ff";
 
   // container item one tube +support cadre
   table = frame.asset("table.jpg").sca(.5).centerReg(stage);
@@ -211,9 +212,22 @@ var btn = new Button({
 btn.addTo(stage);
 btn.pos(stageW-(panel.width+btn.width),0)
 
-btn.on("mousedown", function() {
+btn.on("click", function() {
    eau.pauseAnimate(!eau.paused);
 });
+ btn1 = new Button({
+   label:"اعادة التجربة",
+   width:250,
+   height:90,
+   backgroundColor:"purple",
+   rollBackgroundColor:"MediumOrchid",
+   borderWidth:2,
+   borderColor:"violet",
+   gradient:.3,
+   corner:1
+}).addTo(stage).btn.pos(0,0);
+
+btn1.on("click", function() {zgo("https://simz.netlify.com/plante_4.html");});
 
    stage.update();
 

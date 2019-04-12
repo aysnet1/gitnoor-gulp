@@ -1,6 +1,27 @@
 .DS_Store
-bower_components
 node_modules
-npm-debug.log
-_site
-.sass-cache
+/dist
+_web
+semantic
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+#Electron-builder output
+/dist_electron
