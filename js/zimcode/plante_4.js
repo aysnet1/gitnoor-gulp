@@ -214,7 +214,6 @@ btn.pos(stageW-(panel.width+btn.width),0)
 
 
  btn.on("click", function() {eau.pauseAnimate()});
-});
  btn1 = new Button({
    label:"اعادة التجربة",
    width:250,
