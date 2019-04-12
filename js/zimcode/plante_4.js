@@ -209,11 +209,8 @@ var btn = new Button({
    gradient:.3,
    corner:1
 });
-btn.addTo(stage);
-btn.pos(stageW-(panel.width+btn.width),0)
-
-
- btn.on("click", function() {eau.pauseAnimate()});
+ 
+ 
  btn1 = new Button({
    label:"اعادة التجربة",
    width:250,
@@ -224,7 +221,7 @@ btn.pos(stageW-(panel.width+btn.width),0)
    borderColor:"violet",
    gradient:.3,
    corner:1
-}).addTo(stage);
+}).addTo();
 
 btn1.on("click", function() {zgo("https://simz.netlify.com/plante_4.html");});
 
