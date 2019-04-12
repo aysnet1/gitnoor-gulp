@@ -224,7 +224,7 @@ btn.pos(stageW-(panel.width+btn.width),0)
    borderColor:"violet",
    gradient:.3,
    corner:1
-}).addTo(stage).btn.pos(0,0);
+}).addTo(stage);
 
 btn1.on("click", function() {zgo("https://simz.netlify.com/plante_4.html");});
 
