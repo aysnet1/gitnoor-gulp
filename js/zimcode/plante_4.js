@@ -27,7 +27,7 @@ frame.on("ready", function() {
   var stageW = frame.width;
   var stageH = frame.height;
   frame.outerColor = "#444";
-  frame.color = "#99c1ff";
+  
 
   // container item one tube +support cadre
   table = frame.asset("table.jpg").sca(.5).centerReg(stage);
