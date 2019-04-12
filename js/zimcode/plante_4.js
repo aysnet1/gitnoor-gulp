@@ -212,8 +212,8 @@ var btn = new Button({
 btn.addTo(stage);
 btn.pos(stageW-(panel.width+btn.width),0)
 
-btn.on("click", function() {
-   eau.pauseAnimate(!eau.paused);
+
+ btn.on("click", function() {eau.pauseAnimate()});
 });
  btn1 = new Button({
    label:"اعادة التجربة",
