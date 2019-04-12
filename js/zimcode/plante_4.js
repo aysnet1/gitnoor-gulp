@@ -4,22 +4,31 @@ var assets = ["table.jpg", "plante.png"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
+var pattern = pizzazz.makePattern({
+        type:"slants",
+        colors:makeSeries([frame.brown, frame.grey]),
+        size:5,
+        rows:20,
+        cols:60,
+        interval:500
+    });
+var bar = new ProgressBar({
+        barType:"Rectangle",
+        color:frame.dark,
+        backingColor:frame.dark,
+        backing:pattern,
 
+        // corner:0,
+        // borderColor:frame.blue,
+        // borderWidth:10,
+        // label:"LOADING",
+        // labelPosition:"above",
+        // padding:3,
+        percentage:true,
+        // fastClose:true
+    });
 
-var frame = new Frame(scaling, width, 768, null, null, assets, path,
-  new ProgressBar({
-  barType: "Rectangle",
-  color: "rgb(153, 193, 255)",
-
-  borderColor: dark,
-  corner: 0,
-  //  borderWidth:10,
-  label: "LOADING",
-  labelPosition: "above",
-  // padding:3,
-  percentage: true,
-  fastClose: false,
-}));
+var frame = new Frame(scaling, width, 768, null, null, assets, path,bar);
 frame.on("ready", function() {
 
 
