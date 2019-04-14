@@ -187,6 +187,7 @@ plante.pos(50, 35)
    
     
     {
+        
         zog("tdd ")
       eau.animate({
         props: {
@@ -199,17 +200,16 @@ plante.pos(50, 35)
     })
     } 
    
-    
+    plante.pauseAnimate(!plante.pause)
    
-
-
+//
   });
 
  plante.outline(
      tf.outline()
  )
-
-  var label = new Label({
+ 
+   var label = new Label({
    text:"توقف",
    size:40,
    backgroundColor:"violet", //
