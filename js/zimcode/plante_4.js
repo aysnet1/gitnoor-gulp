@@ -14,8 +14,8 @@ var pattern = pizzazz.makePattern({
     });
 var bar = new ProgressBar({
         barType:"Rectangle",
-        color:frame.dark,
-        backingColor:frame.dark,
+        color:"dark",
+
         backing:pattern,
 
         // corner:0,
@@ -46,14 +46,16 @@ frame.on("ready", function() {
     titleBar: "      أدوات التجربة"
   }).addTo(stage)
   panel.pos(stageW - panel.width, 0)
+plante = new Rectangle(150,220,"transparent").centerReg().drag()
+  back_plante = frame.asset("plante.png").sca(.2).centerReg(plante)  ;
 
-  plante = frame.asset("plante.png").sca(.2).centerReg(panel).drag({
-    onTop: false
-  });
-  //
-  plante.pos(50, 35)
 
+
+plante.centerReg(panel);
+plante.pos(50, 35)
   tf = new Rectangle(234, 279, "#fff0");
+
+
 
   // القارورة
   t1 = new Shape();
@@ -102,14 +104,12 @@ frame.on("ready", function() {
   eau.scaleY = 1;
 
 
-  tmp1 = false;
-  tmp2 = false;
-  tmp3 = false;
+
 
   plante.on("pressup", function() {
     // 3. inside the function do a conditional for the hitTest
     if (plante.hitTestBounds(tf)) {
-      tmp1 = true;
+
 
       plante.animate({
         props: {
@@ -123,15 +123,16 @@ frame.on("ready", function() {
         }
 
       })
-      plante.noDrag()
+
 
     }
+
     stage.update();
   });
   tf.on("pressup", function() {
 
     if (tf.hitTestBounds(table)) {
-      tmp2 = true;
+
       tf.animate({
         props: {
           x: -(table.x + 150),
@@ -143,7 +144,7 @@ frame.on("ready", function() {
           percentSpeed: 1
         }
       })
-      tf.noDrag()
+
 
     }
     stage.update();
@@ -178,27 +179,35 @@ frame.on("ready", function() {
     currentTarget: true
   });
   tf.pos(20, 250)
-  if (plante.hitTestBounds(tf) == false || tf.hitTestBounds(table) == false) {
-    tmp1 = tmp2 = false;
 
-  }
-
+  
   Ticker.add(function() {
 
-    if (tmp1 & tmp2) {
+   if (tf.hitTestBounds(table)  &  plante.hitTestBounds(tf) )
+   
+    
+    {
+        zog("tdd ")
       eau.animate({
         props: {
           scaleY: 0.5
         },
-         events:true,
         dynamic:true,
-        ease: "linear",
-        time: 40000,
+        ease:"quadInOu",
 
-      })
-    }
+        time: 6000
+    })
+    } 
+   
+    
+   
+
 
   });
+
+ plante.outline(
+     tf.outline()
+ )
 
   var label = new Label({
    text:"توقف",
@@ -218,8 +227,8 @@ var btn = new Button({
    gradient:.3,
    corner:1
 });
- 
- 
+
+
  btn1 = new Button({
    label:"اعادة التجربة",
    width:250,
