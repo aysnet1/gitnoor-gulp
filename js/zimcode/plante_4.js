@@ -1,6 +1,6 @@
  var scaling = "fit";
 
-var assets = ["table.jpg", "plante.png"];
+var assets = ["interptur.json","table.jpg", "plante.png","interptur.png"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -18,14 +18,8 @@ var bar = new ProgressBar({
 
         backing:pattern,
 
-        // corner:0,
-        // borderColor:frame.blue,
-        // borderWidth:10,
-        // label:"LOADING",
-        // labelPosition:"above",
-        // padding:3,
         percentage:true,
-        // fastClose:true
+
     });
 
 var frame = new Frame(scaling, width, 768, null, null, assets, path,bar);
@@ -38,22 +32,39 @@ frame.on("ready", function() {
   frame.outerColor = "#444";
   frame.color= "white" ;
 
-  // container item one tube +support cadre
+  btn1 = new Button({
+    label:"اعادة التجربة",
+    width:250,
+    height:90,
+    backgroundColor:"purple",
+    rollBackgroundColor:"MediumOrchid",
+    borderWidth:2,
+    borderColor:"violet",
+    gradient:.3,
+    corner:1
+  }).addTo();
+
   table = frame.asset("table.jpg").sca(.5).centerReg(stage);
   table.pos(0, 400);
+
+
+
+
   panel = new Panel({
     height: stageH,
     titleBar: "      أدوات التجربة"
   }).addTo(stage)
   panel.pos(stageW - panel.width, 0)
-plante = new Rectangle(150,220,"transparent").centerReg().drag()
-  back_plante = frame.asset("plante.png").sca(.2).centerReg(plante)  ;
+plante = new Rectangle(150,220,"transparent").addTo().drag()
 
+anim = zimify( new Sprite({json:frame.asset("interptur.json")}));
 
+anim.centerReg(plante)
 
-plante.centerReg(panel);
-plante.pos(50, 35)
-  tf = new Rectangle(234, 279, "#fff0");
+plante.center(panel);
+// create new *bouteille* for water
+
+ bout = new Rectangle(234, 279, "#fff0");
 
 
 
@@ -95,7 +106,7 @@ plante.pos(50, 35)
     color: "rgba(0,0,255,0.588)",
     corner: [0, 0, 12, 12]
   });
-  eau.centerReg(tf)
+  eau.centerReg(bout)
   eau.x = 52.45 * 2 + 15;
   eau.y = 328;
   eau.regX = eau.width / 2;
@@ -108,13 +119,13 @@ plante.pos(50, 35)
 
   plante.on("pressup", function() {
     // 3. inside the function do a conditional for the hitTest
-    if (plante.hitTestBounds(tf)) {
+    if (plante.hitTestBounds(bout)) {
 
 
       plante.animate({
         props: {
-          x: tf.x,
-          y: tf.y - 60
+          x: bout.x,
+          y: bout.y - 60
         },
         ease: "linear",
         time: 400,
@@ -129,14 +140,14 @@ plante.pos(50, 35)
 
     stage.update();
   });
-  tf.on("pressup", function() {
+  bout.on("pressup", function() {
 
-    if (tf.hitTestBounds(table)) {
+    if (bout.hitTestBounds(table)) {
 
-      tf.animate({
+      bout.animate({
         props: {
           x: -(table.x + 150),
-          y: table.y - tf.height
+          y: table.y - bout.height
         },
         ease: "linear",
         time: 400,
@@ -149,45 +160,27 @@ plante.pos(50, 35)
     }
     stage.update();
   });
-  // t6.on("pressup", function() {
-  //
-  //   if (t6.hitTestBounds(tf)) {
-  //     tmp3 = true;
-  //     t6.animate({
-  //       props: {
-  //         x: tf.x + 1.9,
-  //         y: tf.y - 72
-  //       },
-  //       ease: "linear",
-  //       time: 400,
-  //       set: {
-  //         percentSpeed: 1
-  //       }
-  //     })
-  //
-  //   }
-  //   stage.update();
-  // });
 
 
 
-  // add vial to containe
-  tf.addChild(eau, t1, t2, t4, t5)
-  tf.sca(0.9)
 
-  tf.centerReg(panel).drag({
+
+  bout.addChild(eau, t1, t2, t4, t5)
+  bout.sca(0.9)
+
+  bout.centerReg(panel).drag({
     currentTarget: true
   });
-  tf.pos(20, 250)
+  bout.pos(20, 250)
 
-  
+
   Ticker.add(function() {
 
-   if (tf.hitTestBounds(table)  &  plante.hitTestBounds(tf) )
-   
-    
+   if (bout.hitTestBounds(table)  &  plante.hitTestBounds(bout) )
+
+
     {
-        
+
         zog("tdd ")
       eau.animate({
         props: {
@@ -198,17 +191,21 @@ plante.pos(50, 35)
 
         time: 6000
     })
-    } 
-   
+    }
+
     plante.pauseAnimate(!plante.pause)
-   
+
 //
   });
 
- plante.outline(
-     tf.outline()
- )
- 
+
+
+
+
+
+
+
+
    var label = new Label({
    text:"توقف",
    size:40,
@@ -228,20 +225,12 @@ var btn = new Button({
    corner:1
 });
 
+bout.sca(0.5)
+anim.sca(0.5)
+plante.outline()
 
- btn1 = new Button({
-   label:"اعادة التجربة",
-   width:250,
-   height:90,
-   backgroundColor:"purple",
-   rollBackgroundColor:"MediumOrchid",
-   borderWidth:2,
-   borderColor:"violet",
-   gradient:.3,
-   corner:1
-}).addTo();
+//btn1.on("click", function() {zgo("https://simz.netlify.com/plante_4.html");});
 
-btn1.on("click", function() {zgo("https://simz.netlify.com/plante_4.html");});
 
    stage.update();
 
