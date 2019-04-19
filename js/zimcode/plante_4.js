@@ -1,6 +1,7 @@
  var scaling = "fit";
 
-var assets = ["interptur.json","table.jpg", "plante.png","interptur.png"];
+var assets = ["pcolor.json","tab.png", "pcolor.png",
+"cub.png","cub.png"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -44,8 +45,21 @@ frame.on("ready", function() {
     corner:1
   }).addTo();
 
-  table = frame.asset("table.jpg").sca(.5).centerReg(stage);
-  table.pos(0, 400);
+  // var physics = new Physics({borders:new Boundary(0,-stageH,stageW,stageH*2)});
+  //  physics.remove(physics.borderTop);
+ var s = 0.7;
+     table=new Container().center(stage).mov({y:((stageH*0.91)/2)});
+     img= frame.asset("tab.png").centerReg(table)
+
+
+
+
+
+
+
+
+
+     var bout=new Container().setBounds(0,0,179,361).centerReg(stage).mov({x:-420,y:220}).sca(s)
 
 
 
@@ -57,25 +71,22 @@ frame.on("ready", function() {
   panel.pos(stageW - panel.width, 0)
 plante = new Rectangle(150,220,"transparent").addTo().drag()
 
-anim = zimify( new Sprite({json:frame.asset("interptur.json")}));
+plante =   new Sprite({json:frame.asset("pcolor.json")});
+cub = new Sprite({json:frame.asset("cub.json")}).addTo(bout);
 
-anim.centerReg(plante)
 
 plante.center(panel);
 // create new *bouteille* for water
 
- bout = new Rectangle(234, 279, "#fff0");
+ // bout = new Rectangle(234, 279, "#fff0");
+ // bout1 = new Rectangle(234, 279, "#fff0");
+ // bout2 = new Rectangle(234, 279, "#fff0");
+ // bout3 = new Rectangle(234, 279, "#fff0");
 
 
 
-  // القارورة
-  t1 = new Shape();
-  t1.graphics.f().s("rgba(51,51,51,0.6)").ss(1, 1, 1).p("AK50EIAAdiIAAIpQAAB+iHAAIxiAAQiIAAAAh+Aq4JeIAA9i");
-  t1.setTransform(119.5001, 196.703, 0.9555, 1.0252);
 
-  t2 = new Shape();
-  t2.graphics.f("rgba(102,102,102,0.588)").s().p("AoxUEQiHAAAAh9IAAopIAA9hIVxAAIAAdhIAAIpQAAB9iHAAg");
-  t2.setTransform(119.5001, 196.703, 0.9555, 1.0252);
+
 
 
   // غطاء القارورة-- Vial-top
@@ -83,8 +94,7 @@ plante.center(panel);
   t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9, 1, 1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
   t4.setTransform(119, 43.5);
 
-  t5 = new Shape
-
+  t5 = new Shape()
   t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
   t5.setTransform(119, 43.5);
   // stopper--
@@ -117,117 +127,84 @@ plante.center(panel);
 
 
 
-  plante.on("pressup", function() {
-    // 3. inside the function do a conditional for the hitTest
-    if (plante.hitTestBounds(bout)) {
 
-
-      plante.animate({
-        props: {
-          x: bout.x,
-          y: bout.y - 60
-        },
-        ease: "linear",
-        time: 400,
-        set: {
-          percentSpeed: 1
-        }
-
-      })
-
-
-    }
 
     stage.update();
-  });
+
+
+
+
+
+
+
+  // bout.addChild(eau,   t4, t5).drag()
+  // bout1 = bout.clone()
+  //
+  // bout1.mov({y:10})
+  // // bout2.addChild(eau, t1, t2, t4, t5)
+  // // bout3.addChild(eau, t1, t2, t4, t5)
+  //
+  //
+  //
+  // // bout.centerReg(panel).drag({
+  // //   currentTarget: true
+  // // });
+  // bout.centerReg(stage)
+
+
   bout.on("pressup", function() {
 
-    if (bout.hitTestBounds(table)) {
+    // if (bout.hitTestBounds(table)) {
+    //  boutc = bout.clone()
+    //  boutc.centerReg(table)
+    //
+    // }
 
-      bout.animate({
-        props: {
-          x: -(table.x + 150),
-          y: table.y - bout.height
-        },
-        ease: "linear",
-        time: 400,
-        set: {
-          percentSpeed: 1
-        }
-      })
-
-
-    }
-    stage.update();
   });
 
 
-
-
-
-  bout.addChild(eau, t1, t2, t4, t5)
-  bout.sca(0.9)
-
-  bout.centerReg(panel).drag({
-    currentTarget: true
-  });
-  bout.pos(20, 250)
-
-
-  Ticker.add(function() {
+  plante.on("pressup", function() {
 
    if (bout.hitTestBounds(table)  &  plante.hitTestBounds(bout) )
-
-
-    {
-
-        zog("tdd ")
-      eau.animate({
+     { eau.animate({
         props: {
           scaleY: 0.5
         },
-        dynamic:true,
-        ease:"quadInOu",
 
-        time: 6000
+        time: 6000,
+        wait:2000
     })
     }
-
-    plante.pauseAnimate(!plante.pause)
-
-//
   });
 
 
+plante.sca(s)
 
 
 
 
 
 
+//    var label = new Label({
+//    text:"توقف",
+//    size:40,
+//    backgroundColor:"violet", //
+//    fontOptions:"bold"
+// });
+// var btn = new Button({
+//    label:label,
+//    width:250,
+//    height:90,
+//    toggle:'جرب الان',
+//    backgroundColor:"purple",
+//    rollBackgroundColor:"MediumOrchid",
+//    borderWidth:2,
+//    borderColor:"violet",
+//    gradient:.3,
+//    corner:1
+// });
 
-   var label = new Label({
-   text:"توقف",
-   size:40,
-   backgroundColor:"violet", //
-   fontOptions:"bold"
-});
-var btn = new Button({
-   label:label,
-   width:250,
-   height:90,
-   toggle:'جرب الان',
-   backgroundColor:"purple",
-   rollBackgroundColor:"MediumOrchid",
-   borderWidth:2,
-   borderColor:"violet",
-   gradient:.3,
-   corner:1
-});
 
-bout.sca(0.5)
-anim.sca(0.5)
-plante.outline()
 
 //btn1.on("click", function() {zgo("https://simz.netlify.com/plante_4.html");});
 

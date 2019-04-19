@@ -15,8 +15,10 @@
 		var zon = true; // set to false to turn off console messages from zim
 		var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
 	</script>
-	<script src="https://d309knd7es5f10.cloudfront.net/zim_9.5.1.js"></script><!-- add _doc to see code -->
+	<script src="https://d309knd7es5f10.cloudfront.net/zim_10.js"></script><!-- add _doc to see code -->
 	<script src="https://d309knd7es5f10.cloudfront.net/pizzazz_03.js"></script>
+	<script src="https://d309knd7es5f10.cloudfront.net/Box2dWeb-2.1.a.3.min.js"></script>
+  <script src="https://d309knd7es5f10.cloudfront.net/physics_2.0.js"></script>
 	<!-- uhse zimjs.com/distill for minified individual functions! -->
 
 
@@ -24,16 +26,243 @@
 
 <body>
 
-  <script src="assets/js/zimcode/circuit.js"></script>
+  <script src="assets/js/zimcode/circuit.js">
   
   
   
-      <!-- //Landing page Hero -->
-  
-      <!-- Icon Features section -->
   
   
-      <!-- Roadmap section -->
+  
+  
+  
+  var scaling = "fit";
+  
+  var assets = ["interptur.json","tab.png", "plante.png","interptur.png","bout.png","bout1.png","bout2.png","bout3.png"];
+  var path = "assets/images/plante/";
+  var width = 1024;
+  var height = 768;
+  var pattern = pizzazz.makePattern({
+         type:"slants",
+         colors:makeSeries(["brown",  "grey"]),
+         size:5,
+         rows:20,
+         cols:60,
+         interval:500
+     });
+  var bar = new ProgressBar({
+         barType:"Rectangle",
+         color:"dark",
+  
+         backing:pattern,
+  
+         percentage:true,
+  
+     });
+  
+  var frame = new Frame(scaling, width, 768, null, null, assets, path,bar);
+  frame.on("ready", function() {
+  
+  
+   var stage = frame.stage;
+   var stageW = frame.width;
+   var stageH = frame.height;
+   frame.outerColor = "#444";
+   frame.color= "white" ;
+  
+   btn1 = new Button({
+     label:"اعادة التجربة",
+     width:250,
+     height:90,
+     backgroundColor:"purple",
+     rollBackgroundColor:"MediumOrchid",
+     borderWidth:2,
+     borderColor:"violet",
+     gradient:.3,
+     corner:1
+   }).addTo();
+  
+  
+  var s = 0.7;
+      table=new Container().center(stage).mov({y:((stageH*0.91)/2)});
+      img= frame.asset("tab.png").centerReg(table)
+     var bout=new Container().setBounds(0,0,179,361).centerReg(stage).mov({x:-420,y:220}).sca(s)
+  
+     bout.outline()
+  
+  
+      bout1=new Container().setBounds(0,0,179,361).centerReg(stage).mov({x:-220,y:220}).sca(s)
+      bout2=new Container().setBounds(0,0,179,361).centerReg(stage).mov({x:-20,y:220}).sca(s)
+      bout3=new Container().setBounds(0,0,179,361).centerReg(stage).mov({x:180,y:220}).sca(s)
+  
+       img1= frame.asset("bout.png").addTo(bout)
+       img2= frame.asset("bout1.png").addTo(bout1)
+       img3= frame.asset("bout2.png").addTo(bout2)
+       img4= frame.asset("bout3.png").addTo(bout3)
+  
+  
+  
+  
+  
+  
+  
+  
+   panel = new Panel({
+     height: stageH,
+     titleBar: "      أدوات التجربة"
+   }).addTo(stage)
+   panel.pos(stageW - panel.width, 0)
+  plante = new Rectangle(150,220,"transparent").addTo().drag()
+  
+  anim = zimify( new Sprite({json:frame.asset("interptur.json")}));
+  
+  anim.centerReg(plante)
+  
+  plante.center(panel);
+  // create new *bouteille* for water
+  
+  // bout = new Rectangle(234, 279, "#fff0");
+  // bout1 = new Rectangle(234, 279, "#fff0");
+  // bout2 = new Rectangle(234, 279, "#fff0");
+  // bout3 = new Rectangle(234, 279, "#fff0");
+  
+  
+  
+  
+  
+  
+  
+   // غطاء القارورة-- Vial-top
+   t4 = new Shape();
+   t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9, 1, 1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
+   t4.setTransform(119, 43.5);
+  
+   t5 = new Shape()
+   t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
+   t5.setTransform(119, 43.5);
+   // stopper--
+  
+   // t6 = new Rectangle(54, 29).addTo(stage).drag({
+   //   onTop: false
+   // });
+   // t7 = new Rectangle(27, 29, 'blue').addTo(t6);
+   // t6.y = 250;
+   // t6.x = 680
+   // t6.regX = t6.width / 2;
+   // t6.regY = t6.height;
+  
+   // الماء متحرك -- Water animated--
+  
+   eau = new Rectangle({
+     width: 133,
+     height: 255,
+     color: "rgba(0,0,255,0.588)",
+     corner: [0, 0, 12, 12]
+   });
+   eau.centerReg(bout)
+   eau.x = 52.45 * 2 + 15;
+   eau.y = 328;
+   eau.regX = eau.width / 2;
+   eau.regY = eau.height;
+  
+   eau.scaleY = 1;
+  
+  
+  
+  
+  
+  
+     stage.update();
+  
+  
+  
+  
+  
+  
+  
+   // bout.addChild(eau,   t4, t5).drag()
+   // bout1 = bout.clone()
+   //
+   // bout1.mov({y:10})
+   // // bout2.addChild(eau, t1, t2, t4, t5)
+   // // bout3.addChild(eau, t1, t2, t4, t5)
+   //
+   //
+   //
+   // // bout.centerReg(panel).drag({
+   // //   currentTarget: true
+   // // });
+   // bout.centerReg(stage)
+  
+  
+   bout.on("pressup", function() {
+  
+     // if (bout.hitTestBounds(table)) {
+     //  boutc = bout.clone()
+     //  boutc.centerReg(table)
+     //
+     // }
+  
+   });
+  
+  
+   plante.on("pressup", function() {
+  
+    if (bout.hitTestBounds(table)  &  plante.hitTestBounds(bout) )
+      { eau.animate({
+         props: {
+           scaleY: 0.5
+         },
+  
+         time: 6000,
+         wait:2000
+     })
+     }
+   });
+  
+  
+  plante.sca(s)
+  
+  
+  
+  
+  
+  
+  //    var label = new Label({
+  //    text:"توقف",
+  //    size:40,
+  //    backgroundColor:"violet", //
+  //    fontOptions:"bold"
+  // });
+  // var btn = new Button({
+  //    label:label,
+  //    width:250,
+  //    height:90,
+  //    toggle:'جرب الان',
+  //    backgroundColor:"purple",
+  //    rollBackgroundColor:"MediumOrchid",
+  //    borderWidth:2,
+  //    borderColor:"violet",
+  //    gradient:.3,
+  //    corner:1
+  // });
+  
+  
+  
+  //btn1.on("click", function() {zgo("https://simz.netlify.com/plante_4.html");});
+  
+  
+    stage.update();
+  
+  }); // end of ready
+  
+  
+  
+  
+  
+  
+  
+  
+  </script>
   
 
 </body>

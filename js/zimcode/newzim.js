@@ -1,4 +1,4 @@
-var scaling = "full"; // this will resize to fit inside the screen dimensions
+var scaling = "fit"; // this will resize to fit inside the screen dimensions
 var width = 1000;
 var height = 800;
 var color = dark; // or any HTML color such as "violet" or "#333333"
@@ -11,26 +11,30 @@ frame.on("ready", function() {
 	var stage = frame.stage;
 	var stageW = frame.width;
 	var stageH = frame.height;
-  frame.loadAssets(["bb.json", "bb.png", "bg1.png"], "assets/images/");
-	frame.on("complete", function() {
-
-		frame.asset("bg1.png",100).addTo(stage);
-
-		var sprite = new Sprite({json:frame.asset("bb.json")})
-			.center(stage)
-			.sca(.5)
-			.pos(-100, 180)
-			.animate({
-				props:{x:stageW},
-				time:7000,
-				loop:true,
-				ease:"linear",
-
-			})
-			.run({time:1000, loop:true, id:"bb"});
+	var physics = new Physics({borders:new Boundary(0,-stageH,stageW,stageH*2)});
+	 physics.remove(physics.borderTop);
 
 
-		})
+	 bp = new  Squiggle({
+	      color:'#color',
+	      thickness:null,
+	      length:null,
+	      allowToggle:null,
+	      selectPoints:null,
+	      editPoints:null,
+	       	// more parameter...
 
 
-}); // end of ready
+	 }).center(stage)
+  loop(5,(i)=>{
+      bp.pointCircles[i].addPhysics()
+			bp.pointControls[i].addPhysics()
+
+	})
+	Ticker.add(()=>{
+
+ bp.update()
+
+	})
+	 stage.update()
+ })
