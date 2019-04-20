@@ -1,7 +1,6 @@
  var scaling = "fit";
 
-var assets = ["pcolor.json","tab.png", "pcolor.png",
-"cub.png","cub.png"];
+var assets = ["pcolor.json","tab.png", "pcolor.png","cub.json","cub.png"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -32,6 +31,9 @@ frame.on("ready", function() {
   var stageH = frame.height;
   frame.outerColor = "#444";
   frame.color= "white" ;
+  // table
+  table=new Container().center(stage).mov({y:((stageH*0.91)/2)});
+  img= frame.asset("tab.png").centerReg(table)
 
   btn1 = new Button({
     label:"اعادة التجربة",
@@ -45,11 +47,59 @@ frame.on("ready", function() {
     corner:1
   }).addTo();
 
+new Label({text:'التعليمة قم بوضع باقة الازهار في الكاس ثم لاحظ',size:30}).center().mov(0,-350)
+
+
+
   // var physics = new Physics({borders:new Boundary(0,-stageH,stageW,stageH*2)});
   //  physics.remove(physics.borderTop);
+
  var s = 0.7;
-     table=new Container().center(stage).mov({y:((stageH*0.91)/2)});
-     img= frame.asset("tab.png").centerReg(table)
+
+
+
+     panel = new Panel({
+       height: stageH/2 ,
+       titleBar: "      زهرة القرنفل"
+     }).addTo(stage)
+     panel.pos(stageW - panel.width, 0)
+
+
+
+
+
+ fc = new Container().setBounds(0,0,179,361).addTo().drag({currentTarget:true,onTop:false})
+var cb=new Container().setBounds(-80,0,179,361).centerReg(stage).mov({x:0,y:225}).sca(0.8)
+fc.mov(stageW-fc.width,0)
+
+
+// Sprite
+plante = new Sprite({json:frame.asset("pcolor.json")}).centerReg(fc);
+cub = new Sprite({json:frame.asset("cub.json")}).centerReg(cb);
+label = new Label('ماء ملون').centerReg(cb)
+
+fc.on("pressup",()=>{
+
+if (fc.hitTestRect(cub)) {
+  fc.animate({
+        props:{
+          x:cb.x-70,
+          y:cb.y-300
+        },
+        time:400,
+        events:true
+
+  })
+  fc.noDrag()
+
+
+
+
+}
+});
+fc.on("animation",()=>{
+plante.run(30000)
+})
 
 
 
@@ -57,47 +107,15 @@ frame.on("ready", function() {
 
 
 
-
-
-     var bout=new Container().setBounds(0,0,179,361).centerReg(stage).mov({x:-420,y:220}).sca(s)
-
-
-
-
-  panel = new Panel({
-    height: stageH,
-    titleBar: "      أدوات التجربة"
-  }).addTo(stage)
-  panel.pos(stageW - panel.width, 0)
-plante = new Rectangle(150,220,"transparent").addTo().drag()
-
-plante =   new Sprite({json:frame.asset("pcolor.json")});
-cub = new Sprite({json:frame.asset("cub.json")}).addTo(bout);
-
-
-plante.center(panel);
-// create new *bouteille* for water
-
- // bout = new Rectangle(234, 279, "#fff0");
- // bout1 = new Rectangle(234, 279, "#fff0");
- // bout2 = new Rectangle(234, 279, "#fff0");
- // bout3 = new Rectangle(234, 279, "#fff0");
-
-
-
-
-
-
-
-  // غطاء القارورة-- Vial-top
-  t4 = new Shape();
-  t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9, 1, 1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
-  t4.setTransform(119, 43.5);
-
-  t5 = new Shape()
-  t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
-  t5.setTransform(119, 43.5);
-  // stopper--
+  // // غطاء القارورة-- Vial-top
+  // t4 = new Shape();
+  // t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9, 1, 1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
+  // t4.setTransform(119, 43.5);
+  //
+  // t5 = new Shape()
+  // t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
+  // t5.setTransform(119, 43.5);
+  // // stopper--
 
   // t6 = new Rectangle(54, 29).addTo(stage).drag({
   //   onTop: false
@@ -110,76 +128,76 @@ plante.center(panel);
 
   // الماء متحرك -- Water animated--
 
-  eau = new Rectangle({
-    width: 133,
-    height: 255,
-    color: "rgba(0,0,255,0.588)",
-    corner: [0, 0, 12, 12]
-  });
-  eau.centerReg(bout)
-  eau.x = 52.45 * 2 + 15;
-  eau.y = 328;
-  eau.regX = eau.width / 2;
-  eau.regY = eau.height;
-
-  eau.scaleY = 1;
-
-
-
-
-
-
-    stage.update();
-
-
-
-
-
-
-
-  // bout.addChild(eau,   t4, t5).drag()
-  // bout1 = bout.clone()
+  // eau = new Rectangle({
+  //   width: 133,
+  //   height: 255,
+  //   color: "rgba(0,0,255,0.588)",
+  //   corner: [0, 0, 12, 12]
+  // });
+  // eau.centerReg(bout)
+  // eau.x = 52.45 * 2 + 15;
+  // eau.y = 328;
+  // eau.regX = eau.width / 2;
+  // eau.regY = eau.height;
   //
-  // bout1.mov({y:10})
-  // // bout2.addChild(eau, t1, t2, t4, t5)
-  // // bout3.addChild(eau, t1, t2, t4, t5)
-  //
-  //
-  //
-  // // bout.centerReg(panel).drag({
-  // //   currentTarget: true
-  // // });
-  // bout.centerReg(stage)
+  // eau.scaleY = 1;
 
-
-  bout.on("pressup", function() {
-
-    // if (bout.hitTestBounds(table)) {
-    //  boutc = bout.clone()
-    //  boutc.centerReg(table)
-    //
-    // }
-
-  });
-
-
-  plante.on("pressup", function() {
-
-   if (bout.hitTestBounds(table)  &  plante.hitTestBounds(bout) )
-     { eau.animate({
-        props: {
-          scaleY: 0.5
-        },
-
-        time: 6000,
-        wait:2000
-    })
-    }
-  });
-
-
-plante.sca(s)
-
+//
+//
+//
+//
+//
+//     stage.update();
+//
+//
+//
+//
+//
+//
+//
+//   // bout.addChild(eau,   t4, t5).drag()
+//   // bout1 = bout.clone()
+//   //
+//   // bout1.mov({y:10})
+//   // // bout2.addChild(eau, t1, t2, t4, t5)
+//   // // bout3.addChild(eau, t1, t2, t4, t5)
+//   //
+//   //
+//   //
+//   // // bout.centerReg(panel).drag({
+//   // //   currentTarget: true
+//   // // });
+//   // bout.centerReg(stage)
+//
+//
+//   bout.on("pressup", function() {
+//
+//     // if (bout.hitTestBounds(table)) {
+//     //  boutc = bout.clone()
+//     //  boutc.centerReg(table)
+//     //
+//     // }
+//
+//   });
+//
+//
+//   plante.on("pressup", function() {
+//
+//    if (bout.hitTestBounds(table)  &  plante.hitTestBounds(bout) )
+//      { eau.animate({
+//         props: {
+//           scaleY: 0.5
+//         },
+//
+//         time: 6000,
+//         wait:2000
+//     })
+//     }
+//   });
+//
+//
+// plante.sca(s)
+//
 
 
 
