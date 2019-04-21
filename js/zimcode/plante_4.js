@@ -85,10 +85,10 @@ var bbc="" ;
 
 
 
-if (!plante.running)) {
+if (!plante.running) {
   fc.on("pressup",()=>{
    
-  if (fc.hitTestRect(cub) {
+  if (fc.hitTestRect(cub)) {
     fc.animate({
           props:{
             x:cb.x-70,
