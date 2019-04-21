@@ -85,10 +85,10 @@ var bbc="" ;
 
 
 
-
+if (!plante.running) {
   fc.on("pressup",()=>{
-
-  if (fc.hitTestRect(cub)) {
+   
+  if (fc.hitTestRect(cub) ({
     fc.animate({
           props:{
             x:cb.x-70,
@@ -98,28 +98,33 @@ var bbc="" ;
           events:true
 
     })
+   fc.noDrag()
     cub.run(2000)
      frame.asset("water.mp3").play()
   }
 
-  });
+  })
+} else {
+
+fc.drag({currentTarget:true,onTop:false})
+}
 
 
 fc.on("animation",()=>{
 plante.run(30000)
 })
-Ticker.add(()=>{
+/* Ticker.add(()=>{
 
 if (plante.running) {
+     
 
     fc.noDrag()
 
   }
 
-})
+}) */
 
-  fc.drag({currentTarget:true,onTop:false})
-
+  
 
 
 
