@@ -76,6 +76,7 @@ var cb=new Container().setBounds(-80,0,179,361).centerReg(stage).mov({x:0,y:225}
 });
 fc.mov(stageW-fc.width,0)
 
+fc.drag({currentTarget:true,onTop:false})
 
 // Sprite
 plante = new Sprite({json:frame.asset("pcolor.json")}).centerReg(fc);
@@ -104,10 +105,9 @@ if (!plante.running) {
   }
 
   })
-} else {
-
-fc.drag({currentTarget:true,onTop:false})
+fc.stopAnimation()
 }
+
 })
 
 fc.on("animation",()=>{
