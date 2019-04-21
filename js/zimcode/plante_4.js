@@ -98,6 +98,7 @@ if (!plante.running) {
           events:true
 
     })
+    fc.stopAnimation()
    fc.noDrag()
     cub.run(2000)
      frame.asset("water.mp3").play()
