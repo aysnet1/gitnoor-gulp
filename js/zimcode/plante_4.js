@@ -83,11 +83,11 @@ plante = new Sprite({json:frame.asset("pcolor.json")}).centerReg(fc);
 var cub = new Sprite({json:frame.asset("cub.json")}).centerReg(cb)
 label = new Label('ماء ملون').centerReg(cb)
 var bbc="" ;
-Ticker.add(()=>{
 
 
-  fc.on("pressup",()=>{
-   
+
+  var prez = fc.on("pressup",function() {
+
   if (fc.hitTestRect(cub)) {
     fc.animate({
           props:{
@@ -98,24 +98,44 @@ Ticker.add(()=>{
           events:true
 
     })
-    fc.stopAnimation()
+
    fc.noDrag()
     cub.run(2000)
      frame.asset("water.mp3").play()
+
   }
 
   })
-fc.stopAnimation()
-}
+
 
 
 fc.on("animation",()=>{
-plante.run(30000)
+fc.off("pressup",prez)
+plante.run(200)
 })
+textr = new Label({text:"",color:"red",size:40}).center().mov(-200,-140)
+// add a drag when plante stop running
+Ticker.add(()=>{
+
+if (plante.running== false){
+  tmp = true
+  plante.running= true
+   textr.text = "الان ماذا تلاحظ ؟"
+
+fc.drag()
+
+}
+
+
+})
+
+
+
+
 /* Ticker.add(()=>{
 
 if (plante.running) {
-     
+
 
     fc.noDrag()
 
@@ -123,7 +143,7 @@ if (plante.running) {
 
 }) */
 
-  
+
 
 
 
