@@ -1,4 +1,4 @@
- var scaling = "fit";
+  var scaling = "fit";
 
 var assets = ["pcolor.json","tab.png", "pcolor.png","cub.json","cub.png","water.mp3"];
 var path = "assets/images/plante/";
@@ -82,8 +82,7 @@ plante = new Sprite({json:frame.asset("pcolor.json")}).centerReg(fc);
 var cub = new Sprite({json:frame.asset("cub.json")}).centerReg(cb)
 label = new Label('ماء ملون').centerReg(cb)
 var bbc="" ;
-
-
+Ticker.add(()=>{
 
 if (!plante.running) {
   fc.on("pressup",()=>{
@@ -109,7 +108,7 @@ if (!plante.running) {
 
 fc.drag({currentTarget:true,onTop:false})
 }
-
+})
 
 fc.on("animation",()=>{
 plante.run(30000)
