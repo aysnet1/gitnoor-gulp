@@ -85,7 +85,7 @@ label = new Label('ماء ملون').centerReg(cb)
 var bbc="" ;
 Ticker.add(()=>{
 
-if (!plante.running) {
+
   fc.on("pressup",()=>{
    
   if (fc.hitTestRect(cub)) {
@@ -108,7 +108,6 @@ if (!plante.running) {
 fc.stopAnimation()
 }
 
-})
 
 fc.on("animation",()=>{
 plante.run(30000)
