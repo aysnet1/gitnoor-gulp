@@ -85,7 +85,7 @@ var bbc="" ;
 
 
 
-if (!plante.running) {
+if (!plante.running)) {
   fc.on("pressup",()=>{
    
   if (fc.hitTestRect(cub) {
