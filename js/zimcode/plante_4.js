@@ -1,6 +1,6 @@
  var scaling = "fit";
 
-var assets = ["pcolor.json","tab.png", "pcolor.png","cub.json","cub.png"];
+var assets = ["pcolor.json","tab.png", "pcolor.png","cub.json","cub.png","water.mp3"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -68,41 +68,57 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
 
 
 
- fc = new Container().setBounds(0,0,179,361).addTo().drag({currentTarget:true,onTop:false})
-var cb=new Container().setBounds(-80,0,179,361).centerReg(stage).mov({x:0,y:225}).sca(0.8)
+ fc = new Container().setBounds(0,0,179,361).addTo()
+var cb=new Container().setBounds(-80,0,179,361).centerReg(stage).mov({x:0,y:225}).sca(0.8).tap(function (e) {
+   cub.run(2000);
+   frame.asset("water.mp3").play()
+   stage.update();
+});
 fc.mov(stageW-fc.width,0)
 
 
 // Sprite
 plante = new Sprite({json:frame.asset("pcolor.json")}).centerReg(fc);
-cub = new Sprite({json:frame.asset("cub.json")}).centerReg(cb);
+var cub = new Sprite({json:frame.asset("cub.json")}).centerReg(cb)
 label = new Label('ماء ملون').centerReg(cb)
-
-fc.on("pressup",()=>{
-
-if (fc.hitTestRect(cub)) {
-  fc.animate({
-        props:{
-          x:cb.x-70,
-          y:cb.y-300
-        },
-        time:400,
-        events:true
-
-  })
-  fc.noDrag()
+var bbc="" ;
 
 
 
 
-}
-});
+  fc.on("pressup",()=>{
+
+  if (fc.hitTestRect(cub)) {
+    fc.animate({
+          props:{
+            x:cb.x-70,
+            y:cb.y-300
+          },
+          time:400,
+          events:true
+
+    })
+    cub.run(2000)
+     frame.asset("water.mp3").play()
+  }
+
+  });
+
+
 fc.on("animation",()=>{
 plante.run(30000)
 })
+Ticker.add(()=>{
 
+if (plante.running) {
 
+    fc.noDrag()
 
+  }
+
+})
+
+  fc.drag({currentTarget:true,onTop:false})
 
 
 
