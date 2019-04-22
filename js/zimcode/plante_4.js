@@ -1,6 +1,6 @@
   var scaling = "fit";
 
-var assets = ["pclast.json","tab.png","racin.png", "pclast.png","cublast.json","cublast.png","water.mp3"];
+var assets = ["pclast.json","tab.png", "pclast.png","cublast.json","cublast.png","water.mp3"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -80,7 +80,7 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
  var cb=new Container().setBounds(-80,0,179,361).centerReg(stage).mov({x:0,y:225}).sca(0.8).tap(function (e) {
     cub.run(2000,color);
     frame.asset("water.mp3").play()
-    stage.update();
+    
  });
  fc.mov(stageW-fc.width,0)
 
@@ -89,7 +89,7 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
  // Sprite
  var plante = new Sprite({json:frame.asset("pclast.json")}).centerReg(fc);
  var cub = new Sprite({json:frame.asset("cublast.json")}).centerReg(cb)
- racin = frame.asset("racin.png").centerReg(fc).mov(18,220)
+
  fc.sca(0.9)
  label = new Label('ماء ملون').centerReg(cb)
 
@@ -100,18 +100,13 @@ var color=  colorPicker.currentValue
  cub.gotoAndStop(color)
 
 
-
-
- if (fc.hitTestRect(cub)) {
-
-
- }
  colorPicker.on("change", function() {
    color = colorPicker.currentValue;
    cub.gotoAndStop(colorPicker.currentValue)
-  plante.run(30000,color)
+ if (fc.hitTestRect(cub)) {
+    plante.run(30000,color)
 
-
+})
 
 
 
@@ -144,32 +139,9 @@ var color=  colorPicker.currentValue
 
     cub.run(2000,color)
     plante.run(30000,color)
-  frame.asset("water.mp3").play()
-
-  stage.update()
-  }
-
-  })
-
-
-
-
-fc.on("animation",()=>{
-  fc.off("pressmove",prez)
-
+    frame.asset("water.mp3").play()
+    })
 })
-
-
-/* Ticker.add(()=>{
-
-if (plante.running) {
-
-
-    fc.noDrag()
-
-  }
-
-}) */
 
 
 
