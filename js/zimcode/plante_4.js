@@ -140,7 +140,7 @@ var color=  colorPicker.currentValue
     cub.run(2000,color)
     plante.run(30000,color)
     frame.asset("water.mp3").play()
-    })
+    }
 })
 
 
