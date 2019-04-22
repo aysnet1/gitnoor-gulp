@@ -106,7 +106,7 @@ var color=  colorPicker.currentValue
  if (fc.hitTestRect(cub)) {
     plante.run(30000,color)
 
-})
+}
 
 
 
