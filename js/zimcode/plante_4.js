@@ -84,10 +84,10 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
  });
  fc.mov(stageW-fc.width,0)
 
- fc.drag({currentTarget:true,onTop:false})
+ //fc.drag({currentTarget:true,onTop:false})
 
  // Sprite
- var plante = new Sprite({json:frame.asset("pcfin.json")}).centerReg(fc);
+ //var plante = new Sprite({json:frame.asset("pcfin.json")}).centerReg(fc);
  var cub = new Sprite({json:frame.asset("cublast.json")}).centerReg(cb)
 
  fc.sca(0.9)
@@ -103,10 +103,10 @@ var color=  colorPicker.currentValue
  colorPicker.on("change", function() {
    color = colorPicker.currentValue;
    cub.gotoAndStop(colorPicker.currentValue)
- if (fc.hitTestRect(cub)) {
-    plante.run(30000)
+// if (fc.hitTestRect(cub)) {
+ //   plante.run(30000)
 
-}
+//}
 
 
 
@@ -122,11 +122,11 @@ var color=  colorPicker.currentValue
 
 
 
- prez = fc.on("pressmove",function() {
+// prez = fc.on("pressmove",function() {
 
-  if (fc.hitTestRect(cub)) {
-       fc.noDrag()
-    fc.animate({
+ // if (fc.hitTestRect(cub)) {
+     //  fc.noDrag()
+   /* fc.animate({
           props:{
             x:cb.x-100,
             y:cb.y-300
@@ -142,8 +142,7 @@ var color=  colorPicker.currentValue
     frame.asset("water.mp3").play()
     }
 })
-
-
+*/
 
 
 
