@@ -1,6 +1,6 @@
   var scaling = "fit";
 
-var assets = ["pclast.json","tab.png", "pclast.png","cublast.json","cublast.png","water.mp3"];
+var assets = ["pcfin.json","tab.png", "pcfin.png","cublast.json","cublast.png","water.mp3"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -87,7 +87,7 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
  fc.drag({currentTarget:true,onTop:false})
 
  // Sprite
- var plante = new Sprite({json:frame.asset("pclast.json")}).centerReg(fc);
+ var plante = new Sprite({json:frame.asset("pcfin.json")}).centerReg(fc);
  var cub = new Sprite({json:frame.asset("cublast.json")}).centerReg(cb)
 
  fc.sca(0.9)
@@ -104,7 +104,7 @@ var color=  colorPicker.currentValue
    color = colorPicker.currentValue;
    cub.gotoAndStop(colorPicker.currentValue)
  if (fc.hitTestRect(cub)) {
-    plante.run(30000,color)
+    plante.run(30000)
 
 }
 
@@ -138,7 +138,7 @@ var color=  colorPicker.currentValue
 
 
     cub.run(2000,color)
-    plante.run(30000,color)
+    plante.run(30000)
     frame.asset("water.mp3").play()
     }
 })
