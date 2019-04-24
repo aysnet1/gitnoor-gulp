@@ -92,7 +92,9 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
  racin = frame.asset("racin.png").centerReg(fc).mov(18,170)
  racin.sca(0.7)
  plante.sca(2)
+
  cub.sca(2.2)
+ fc.sca(1)
 
  label = new Label('ماء ملون').centerReg(cb)
 
