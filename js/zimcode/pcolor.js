@@ -167,7 +167,7 @@ fc.on("animation",()=>{
 
 
 
-btn1.on("click", function() {zgo("/plante_4.html");});
+btn1.on("click", function() {zgo("/pcolor.html");});
 
 
    stage.update();
