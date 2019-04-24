@@ -1,6 +1,6 @@
   var scaling = "fit";
 
-var assets = ["pclast.json","tab.png","racin.png", "pclast.png","cublast.json","cublast.png","water.mp3"];
+var assets = ["plm.json","tab.png","racin.png", "plm.png","cubm.json","cubm.png","water.mp3"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -82,15 +82,18 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
     frame.asset("water.mp3").play()
     stage.update();
  });
- fc.mov(stageW-fc.width,0)
+ fc.mov(stageW-(fc.width+40),-15)
 
  fc.drag({currentTarget:true,onTop:false})
 
  // Sprite
- var plante = new Sprite({json:frame.asset("pclast.json")}).centerReg(fc);
- var cub = new Sprite({json:frame.asset("cublast.json")}).centerReg(cb)
- racin = frame.asset("racin.png").centerReg(fc).mov(18,220)
- fc.sca(0.9)
+ var plante = new Sprite({json:frame.asset("plm.json")}).centerReg(fc);
+ var cub = new Sprite({json:frame.asset("cubm.json")}).centerReg(cb)
+ racin = frame.asset("racin.png").centerReg(fc).mov(18,170)
+ racin.sca(0.7)
+ plante.sca(2)
+ cub.sca(2.2)
+
  label = new Label('ماء ملون').centerReg(cb)
 
 
@@ -102,14 +105,15 @@ var color=  colorPicker.currentValue
 
 
 
- if (fc.hitTestRect(cub)) {
-
-
- }
  colorPicker.on("change", function() {
    color = colorPicker.currentValue;
    cub.gotoAndStop(colorPicker.currentValue)
-  plante.run(30000,color)
+
+    if (fc.hitTestRect(cub)) {
+
+     plante.run(30000,color)
+    }
+
 
 
 
@@ -158,137 +162,6 @@ fc.on("animation",()=>{
   fc.off("pressmove",prez)
 
 })
-
-
-/* Ticker.add(()=>{
-
-if (plante.running) {
-
-
-    fc.noDrag()
-
-  }
-
-}) */
-
-
-
-
-
-  // // غطاء القارورة-- Vial-top
-  // t4 = new Shape();
-  // t4.graphics.f().s("rgba(0,0,0,0.6)").ss(2.9, 1, 1).p("Ak1jMQEOBYFdhYIAAGZIprAAg");
-  // t4.setTransform(119, 43.5);
-  //
-  // t5 = new Shape()
-  // t5.graphics.f("rgba(51,51,51,0.498)").s().p("Ak1DNIAAmZQEOBYFdhYIAAGZg");
-  // t5.setTransform(119, 43.5);
-  // // stopper--
-
-  // t6 = new Rectangle(54, 29).addTo(stage).drag({
-  //   onTop: false
-  // });
-  // t7 = new Rectangle(27, 29, 'blue').addTo(t6);
-  // t6.y = 250;
-  // t6.x = 680
-  // t6.regX = t6.width / 2;
-  // t6.regY = t6.height;
-
-  // الماء متحرك -- Water animated--
-
-  // eau = new Rectangle({
-  //   width: 133,
-  //   height: 255,
-  //   color: "rgba(0,0,255,0.588)",
-  //   corner: [0, 0, 12, 12]
-  // });
-  // eau.centerReg(bout)
-  // eau.x = 52.45 * 2 + 15;
-  // eau.y = 328;
-  // eau.regX = eau.width / 2;
-  // eau.regY = eau.height;
-  //
-  // eau.scaleY = 1;
-
-//
-//
-//
-//
-//
-//     stage.update();
-//
-//
-//
-//
-//
-//
-//
-//   // bout.addChild(eau,   t4, t5).drag()
-//   // bout1 = bout.clone()
-//   //
-//   // bout1.mov({y:10})
-//   // // bout2.addChild(eau, t1, t2, t4, t5)
-//   // // bout3.addChild(eau, t1, t2, t4, t5)
-//   //
-//   //
-//   //
-//   // // bout.centerReg(panel).drag({
-//   // //   currentTarget: true
-//   // // });
-//   // bout.centerReg(stage)
-//
-//
-//   bout.on("pressup", function() {
-//
-//     // if (bout.hitTestBounds(table)) {
-//     //  boutc = bout.clone()
-//     //  boutc.centerReg(table)
-//     //
-//     // }
-//
-//   });
-//
-//
-//   plante.on("pressup", function() {
-//
-//    if (bout.hitTestBounds(table)  &  plante.hitTestBounds(bout) )
-//      { eau.animate({
-//         props: {
-//           scaleY: 0.5
-//         },
-//
-//         time: 6000,
-//         wait:2000
-//     })
-//     }
-//   });
-//
-//
-// plante.sca(s)
-//
-
-
-
-
-
-//    var label = new Label({
-//    text:"توقف",
-//    size:40,
-//    backgroundColor:"violet", //
-//    fontOptions:"bold"
-// });
-// var btn = new Button({
-//    label:label,
-//    width:250,
-//    height:90,
-//    toggle:'جرب الان',
-//    backgroundColor:"purple",
-//    rollBackgroundColor:"MediumOrchid",
-//    borderWidth:2,
-//    borderColor:"violet",
-//    gradient:.3,
-//    corner:1
-// });
 
 
 
