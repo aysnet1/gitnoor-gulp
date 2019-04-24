@@ -74,6 +74,7 @@ var   plt = new Container().setBounds(0,0,179,361).addTo().sca(0.8)
     frame.asset("water.mp3").play()
 
  });
+ 
  plt.mov(stageW-(plt.width+40),-15)
 
  plt.drag({currentTarget:true,onTop:false})

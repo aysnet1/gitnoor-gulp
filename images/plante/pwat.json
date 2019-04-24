@@ -1,0 +1,27 @@
+{
+
+"images": [
+    "pwat.png"
+],
+
+"framerate": 20,
+"frames": [
+    [1, 1, 177, 203, 0, -53, -60],
+    [1, 1, 177, 203, 0, -53, -60],
+    [180, 1, 175, 201, 0, -61, -53],
+    [180, 1, 175, 201, 0, -61, -53]
+],
+
+"animations": {
+    "pwa0003": { "frames": [0] },
+    "pwa0005": { "frames": [1] },
+    "pwa0002": { "frames": [2] },
+    "pwa0004": { "frames": [3] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:f52637495c93a022e629a1932fd7b1ce:62339bfd71d73c5f2e8cc52c589d6403:4133c3b38a537879b3119b1b649c544c$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}
