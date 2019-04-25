@@ -114,8 +114,10 @@ pw =  new Sprite({json:frame.asset("pwat.json")}).sca(0.5).centerReg(mira).mov(-
 pw.visible=false
 mira.on("pressup",()=>{
  if ((plt.x==putm.x-15)  && (plt2.x==putv.x-15) && (ter.x==putv.x-20) && (ter1.x==putm.x-20)) {
+  
    Ticker.add(()=>{
   if (mira.hitTestRect(plt2) || mira.hitTestRect(plt)){
+   var rty=true
 mira.animate({
    props:{rotation:-45},
    time:100
@@ -124,7 +126,7 @@ mira.animate({
 pw.visible=true
 pw.play()
 
-
+rty=false;
 
 }
 else{
@@ -143,13 +145,16 @@ else{
 
 
 
- p2.run({time:30000,wait:10000})
+
  }
 
 });
 
+Ticker.add(()=>{ 
 
-
+if (rty==true){
+p2.run({time:30000,wait:10000})})
+}
 
 // a one b : two , c : run Sprite
 function lotme(a,b,c,x,y,t) {
