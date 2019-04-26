@@ -1,4 +1,4 @@
-DISTILL = true;
+
   var scaling = "fit";
 
 var assets = ["plm.json","tab.png","racin.png", "plm.png","cubm.json","cubm.png","water.mp3"];
@@ -170,7 +170,7 @@ fc.on("animation",()=>{
 
 btn1.on("click", function() {zgo("/pcolor.html");});
 
-distill();
+ 
    stage.update();
 
 }); // end of ready
