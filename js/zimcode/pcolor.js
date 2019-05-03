@@ -1,7 +1,7 @@
-
+﻿
   var scaling = "fit";
 
-var assets = ["plm.json","tab.png","racin.png", "plm.png","cubm.json","cubm.png","water.mp3"];
+var assets = ["plm.json","tab.png","racin.png","exp3.png" ,"plm.png","cubm.json","cubm.png","water.mp3"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -38,18 +38,33 @@ frame.on("ready", function() {
   img= frame.asset("tab.png").centerReg(table)
 
   btn1 = new Button({
-    label:"اعادة التجربة",
-    width:250,
-    height:90,
-    backgroundColor:"purple",
+    label:"التجربة التالية",
+    width:200,
+    height:80,
+    backgroundColor:"#37d65f",
     rollBackgroundColor:"MediumOrchid",
     borderWidth:2,
     borderColor:"violet",
     gradient:.3,
     corner:1
   }).addTo();
+  btn2 = new Button({
+    label:"اعادة التجربة",
+    width:200,
+    height:80,
+    backgroundColor:"purple",
+    rollBackgroundColor:"MediumOrchid",
+    borderWidth:2,
+    borderColor:"violet",
+    gradient:.3,
+    corner:1
+  }).addTo().mov(200,0);
 
-new Label({text:'التعليمة قم بوضع باقة الازهار في الكاس ثم لاحظ',size:30}).center().mov(0,-350)
+  qst = frame.asset("exp3.png").addTo().mov(0,90).sca(1.2);
+
+
+
+
 
 
 
@@ -62,7 +77,7 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
 
      panel = new Panel({
        height: stageH/2 ,
-       titleBar: "      زهرة القرنفل"
+       titleBar: "      زهرة الأقحوان"
      }).addTo(stage)
      panel.pos(stageW - panel.width, 0)
     colorPicker = new ColorPicker({
@@ -76,6 +91,7 @@ new Label({text:'التعليمة قم بوضع باقة الازهار في ا�
 		shadowBlur:0,
 
 	}).addTo(stage).pos(stageW - 260, stageH-200);
+  col = new Label("الالوان").pos(stageW - 200, stageH-250);
 
   fc = new Container().setBounds(0,0,179,361).addTo()
  var cb=new Container().setBounds(-80,0,179,361).centerReg(stage).mov({x:0,y:225}).sca(0.8).tap(function (e) {
@@ -166,11 +182,10 @@ fc.on("animation",()=>{
 
 })
 
+btn1.on("click", function() {zgo("/pltva.html");});
+btn2.on("click", function() {zgo("/pcolor.html");});
 
 
-btn1.on("click", function() {zgo("/pcolor.html");});
-
- 
    stage.update();
 
 }); // end of ready

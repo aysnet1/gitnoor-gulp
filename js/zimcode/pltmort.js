@@ -1,6 +1,6 @@
-  var scaling = "fit";
+﻿  var scaling = "fit";
 
-var assets = ["tab.png","pltmort.json","pltmort.png","ter1.png","ter.png","pltmort1.json","pltmort1.png",
+var assets = ["tab.png","pltmort.json","pltmort.png","exp2.png","ter1.png","ter.png","pltmort1.json","pltmort1.png",
 "put.png","putv.png","pltviv.png" ,"racin.png","ra.png",
 "cup1.png","cup2.png","mira.png","pwat.json","pwat.png"];
 var path = "assets/images/plante/";
@@ -41,16 +41,27 @@ frame.on("ready", function() {
   img= frame.asset("tab.png").centerReg(table)
 
   btn1 = new Button({
-    label:"اعادة التجربة",
-    width:250,
-    height:90,
-    backgroundColor:"purple",
+    label:"التجربة التالية",
+    width:200,
+    height:80,
+    backgroundColor:"#37d65f",
     rollBackgroundColor:"MediumOrchid",
     borderWidth:2,
     borderColor:"violet",
     gradient:.3,
     corner:1
   }).addTo();
+  btn2 = new Button({
+    label:"اعادة التجربة",
+    width:200,
+    height:80,
+    backgroundColor:"purple",
+    rollBackgroundColor:"MediumOrchid",
+    borderWidth:2,
+    borderColor:"violet",
+    gradient:.3,
+    corner:1
+  }).addTo().mov(200,0);
   startb = new Button({
     label:"انطلق الأن !",
     width:250,
@@ -59,10 +70,11 @@ frame.on("ready", function() {
     rollBackgroundColor:"MediumOrchid",
     gradient:.5,
     corner:3
-  }).addTo().mov(0,120);
+  }).addTo().mov(340,200);
   startb.visible=false
 
-qst = new Label({text:"التّعليمة: قم بوضع كل نبتة في أصيص ",size:30}).center().mov(0,-350)
+  qst = frame.asset("exp2.png").addTo().mov(0,80)
+
 
 
 
@@ -243,10 +255,8 @@ p2.run({time:30000})
 startb.animate({props:{alpha:0},time:5000})
  });
 
-btn1.on("click", function() {zgo("/pltmort.html");});
-
-
-
+ btn1.on("click", function() {zgo("/pcolor.html");});
+ btn2.on("click", function() {zgo("/pltmort.html");});
 
    stage.update();
 

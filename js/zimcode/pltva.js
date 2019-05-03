@@ -1,6 +1,6 @@
-  var scaling = "fit";
+﻿  var scaling = "fit";
 
-var assets = ["tab.png","plteau.png","pltsa.png","ter1.png","ter.png","eva.png","peva.png","sac.json","sac.png","sac1.json","sac1.png",
+var assets = ["tab.png","plteau.png","exp4.png","pltsa.png","ter1.png","ter.png","eva.png","peva.png","sac.json","sac.png","sac1.json","sac1.png",
 "put.png","putv.png","mira.png","pwat.json","pwat.png"];
 var path = "assets/images/plante/";
 var width = 1024;
@@ -61,7 +61,7 @@ frame.on("ready", function() {
   }).addTo().mov(0,120);
   startb.visible=false
 
-qst = new Label({text:"التّعليمة: قم بوضع كل نبتة في أصيص ",size:30}).center().mov(0,-350)
+qst = frame.asset("exp4.png").addTo().mov(270,20).sca(1.2)
 
 
 
@@ -184,7 +184,7 @@ else{
 if ((sw.x==swX) && (sw1.x==sw1X)) {
   vap.animate({
     props:{
-      alpha:0.9
+      alpha:1
     },
     time:2000
 
@@ -192,7 +192,7 @@ if ((sw.x==swX) && (sw1.x==sw1X)) {
   });
   vap1.animate({
     props:{
-      alpha:0.9
+      alpha:1
     },
     time:1500
  });

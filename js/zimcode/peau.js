@@ -1,6 +1,6 @@
-  var scaling = "fit";
+﻿  var scaling = "fit";
 
-var assets = ["tab.png","supeau.png","plteau.png","water.mp3"];
+var assets = ["tab.png","exp1.png","supeau.png","plteau.png","water.mp3"];
 var path = "assets/images/plante/";
 var width = 1024;
 var height = 768;
@@ -38,18 +38,29 @@ frame.on("ready", function() {
   img= frame.asset("tab.png").centerReg(table)
 
   btn1 = new Button({
-    label:"اعادة التجربة",
-    width:250,
-    height:90,
-    backgroundColor:"purple",
+    label:"التجربة التالية",
+    width:200,
+    height:80,
+    backgroundColor:"#37d65f",
     rollBackgroundColor:"MediumOrchid",
     borderWidth:2,
     borderColor:"violet",
     gradient:.3,
     corner:1
   }).addTo();
+  btn2 = new Button({
+    label:"اعادة التجربة",
+    width:200,
+    height:80,
+    backgroundColor:"purple",
+    rollBackgroundColor:"MediumOrchid",
+    borderWidth:2,
+    borderColor:"violet",
+    gradient:.3,
+    corner:1
+  }).addTo().mov(200,0);
 
-qst = new Label({text:"التّعليمة: قم بوضع النبتة في الأنبوب ثم راقب",size:30}).center().mov(0,-350)
+qst = frame.asset("exp1.png").addTo().mov(0,65).sca(1.2);
 
 
 
@@ -74,7 +85,7 @@ var   plt = new Container().setBounds(0,0,179,361).addTo().sca(0.8)
     frame.asset("water.mp3").play()
 
  });
- 
+
  plt.mov(stageW-(plt.width+40),-15)
 
  plt.drag({currentTarget:true,onTop:false})
@@ -158,16 +169,14 @@ tp2.reg(0,tp1.height)
   })
 
 
-
-
 plt.on("animation",()=>{
   plt.off("pressmove",prez)
 
 })
 
 
-
-btn1.on("click", function() {zgo("/peau.html");});
+btn1.on("click", function() {zgo("/pltmort.html");});
+btn2.on("click", function() {zgo("/peau.html");});
 
 
    stage.update();
