@@ -3,7 +3,7 @@
 
 var assets = ["plm.json","tab.png","racin.png","exp3.png" ,"plm.png","cubm.json","cubm.png","water.mp3"];
 var path = "assets/images/plante/";
-var width = 1024;
+var width = screen.width;
 var height = 768;
 var pattern = pizzazz.makePattern({
         type:"slants",
