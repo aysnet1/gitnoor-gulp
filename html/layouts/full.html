@@ -14,11 +14,36 @@
 	<script>
 		var zon = true; // set to false to turn off console messages from zim
 		var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
+		
 	</script>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 	<script src= "https://d309knd7es5f10.cloudfront.net/zim_10.2.0.js"></script><!-- add _doc to see code -->
 	<script src="https://d309knd7es5f10.cloudfront.net/pizzazz_03.js"></script>
 
 	<!-- uhse zimjs.com/distill for minified individual functions! -->
+	<script>
+	$(window).bind("resize", function(){
+    var w = $(window).width();
+    var h = $(window).height();
+
+    $("myCanvas").css("width", w + "px");
+    $("myCanvas").css("height", h + "px"); 
+});
+
+//using HTML5 for fullscreen (only newest Chrome + FF)
+$("mycanvas")[0].webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT); //Chrome
+$("mycanvas")[0].mozRequestFullScreen(); //Firefox
+
+//...
+
+//now i want to cancel fullscreen
+document.webkitCancelFullScreen(); //Chrome
+document.mozCancelFullScreen(); //Firefox
+	
+	</script>
 
 
 </head>
